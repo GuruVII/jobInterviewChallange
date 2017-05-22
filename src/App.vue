@@ -1,67 +1,83 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1></h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-    <div class="row">
-      <div class="col s6">test</div>
-      <div class="col s3">DIV TEST2</div>
-    </div>
-  </div>
+	<div id="app">
+	  <nav class="light-blue lighten-1" role="navigation">
+	    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+			<ul class="hide-on-med-and-down right">
+				<li><a href="#">Domov</a></li>
+				<li><a href="#">Serivs</a></li>
+				<li><a href="#">Apple dodatki</a></li>
+				<li><a href="#">Apple rezervni deli</a></li>
+				<li><a href="#">Ovitki po naročilu</a></li>
+			</ul>
+
+		<ul id="nav-mobile" class="dropdown-content">
+			<li><a href="#">Domov</a></li>
+			<li><a href="#">Serivs</a></li>
+			<li><a href="#">Apple dodatki</a></li>
+			<li><a href="#">Apple rezervni deli</a></li>
+			<li><a href="#">Ovitki po naročilu</a></li>
+		</ul>
+	      <a href="#" data-activates="nav-mobile" data-beloworigin="true" class="button-collapse dropdown-button"><i class="material-icons">menu</i></a>
+	    </div>
+	  </nav>
+	  <footer class="page-footer orange">
+	    <div class="container">
+	      <div class="row">
+	        <div class="col l6 s12">
+	          <h5 class="white-text">Company Bio</h5>
+	          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+	        </div>
+	        <div class="col l3 s12">
+	          <h5 class="white-text">Settings</h5>
+	          <ul>
+	            <li><a class="white-text" href="#!">Link 1</a></li>
+	            <li><a class="white-text" href="#!">Link 2</a></li>
+	            <li><a class="white-text" href="#!">Link 3</a></li>
+	            <li><a class="white-text" href="#!">Link 4</a></li>
+	          </ul>
+	        </div>
+	        <div class="col l3 s12">
+	          <h5 class="white-text">Connect</h5>
+	          <ul>
+	            <li><a class="white-text" href="#!">Link 1</a></li>
+	            <li><a class="white-text" href="#!">Link 2</a></li>
+	            <li><a class="white-text" href="#!">Link 3</a></li>
+	            <li><a class="white-text" href="#!">Link 4</a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </div>
+	  </footer>
+	</div>
 </template>
 
 <script>
-import Materialize from "materialize-css"
+
 
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+	name: 'app'
 }
 </script>
 <style src="materialize-css/dist/css/materialize.min.css"></style>
 <style lang="sass">
-#app 
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-
-
 h1, h2 
-  font-weight: normal;
+	font-weight: normal;
 
 
 ul 
-  list-style-type: none;
-  padding: 0;
+	list-style-type: none;
+	padding: 0;
 
 
 li 
-  display: inline-block;
-  margin: 0 10px;
+	display: inline-block;
+	margin: 0 10px;
 
 
 a 
-  color: purple;
+	color: purple;
 
 
 </style>

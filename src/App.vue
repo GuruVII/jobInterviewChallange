@@ -11,27 +11,28 @@
         </div>
       </div>
     </div>
-    <nav class="light-blue lighten-1" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="hide-on-med-and-down right">
-        <li><a href="#">Domov</a></li>
-        <li><a href="#">Servis</a></li>
-        <li><a href="#">Apple dodatki</a></li>
-        <li><a href="#">Apple rezervni deli</a></li>
-        <li><a href="#">Ovitki po naročilu</a></li>
-      </ul>
+    <nav class="white z-depth-0" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo"><img src="./assets/logo.png"></a>
+        <ul class="hide-on-med-and-down right nav-menu">
+          <li><a href="#">Domov</a></li>
+          <li><a href="#">Servis</a></li>
+          <li><a href="#">Apple dodatki</a></li>
+          <li><a href="#">Apple rezervni deli</a></li>
+          <li><a href="#">Ovitki po naročilu</a></li>
+        </ul>
 
-    <ul id="nav-mobile" class="dropdown-content">
-      <li><a href="#">Domov</a></li>
-      <li><a href="#">Serivs</a></li>
-      <li><a href="#">Apple dodatki</a></li>
-      <li><a href="#">Apple rezervni deli</a></li>
-      <li><a href="#">Ovitki po naročilu</a></li>
-    </ul>
+        <ul id="nav-mobile" class="dropdown-content">
+          <li><a href="#">Domov</a></li>
+          <li><a href="#">Serivs</a></li>
+          <li><a href="#">Apple dodatki</a></li>
+          <li><a href="#">Apple rezervni deli</a></li>
+          <li><a href="#">Ovitki po naročilu</a></li>
+        </ul>
         <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button"><i class="material-icons">menu</i></a>
-      </div>
+    </div>
     </nav>
-    <footer class="page-footer orange">
+    <!--<footer class="page-footer orange">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
@@ -60,7 +61,7 @@
           </div>
         </div>
       </div>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
@@ -92,6 +93,11 @@ li
       & > a
         color:  #9B9B9B;
 
+ul
+  li
+    & > a
+      color:  #413f40;
+
 .top-bar
   background-color: #222222;
   color: #EEEEEE;
@@ -112,5 +118,18 @@ li
     padding-left: 10px;
     height: 25px;
     margin-top: 13px;
+
+.nav-wrapper
+  img
+    width: 50%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  .nav-menu
+    padding-top: 15px;
+    padding-bottom: 25px;
+nav
+  a
+    color: #413f40;
+    
 
 </style>

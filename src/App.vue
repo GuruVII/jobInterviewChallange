@@ -15,7 +15,9 @@
     <nav class="white z-depth-0" role="navigation">
       <div class="nav-wrapper container">
         <div class="row">
-          <a id="logo-container" href="#" class="brand-logo"><img src="./assets/logo.png"></a>
+          <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button left"><i class="material-icons">menu</i></a>
+          <a id="logo-container" href="#" class="brand-logo left"><img src="./assets/logo.png"></a>
+          <div class="circle-number right nav-menu icon-div center-align"><div class="circle-number-text">1</div></div>
           <div class="right nav-menu icon-div">
             <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i>
           </div>
@@ -38,7 +40,6 @@
             <li><a href="#">Apple rezervni deli</a></li>
             <li><a href="#">Ovitki po naročilu</a></li>
           </ul>        
-          <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button left"><i class="material-icons">menu</i></a>
         </div>
 
     </div>
@@ -138,8 +139,14 @@ ul
     width: 50%;
     padding-top: 25px;
     padding-bottom: 25px;
-    @media (max-width: 650px)
-      width: 60%;
+    @media (max-width: 992px)
+      width: auto;
+      height: 64px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+    @media (max-width: 600px)
+      width: auto;
+      height: 56px;
       padding-top: 0px;
       padding-bottom: 0px;
   .nav-menu
@@ -148,10 +155,25 @@ ul
     @media (max-width: 650px)
       margin-top: 0px;
       margin-bottom: 0px;
+  .circle-number
+    background-color: #00aeef;
+    font-weight: bold;
+    height: 29px;
+    width: 29px;
+    color: white;
+    border-radius: 50%;
+    margin-left: 10px;
+    .circle-number-text
+      font-size: 1.2em;
+      margin-top: 2px;
+    @media (max-width: 992px)
+      margin-right: 20px;
   .icon-div
     margin-top: 35px;
-    @media (max-width: 650px)
-      margin-top: 0px;
+    @media (max-width: 992px)
+      margin-top: 28px;
+    @media (max-width: 600px)
+      margin-top: 20px;
     .nav-icons
       color: #666666;
       height: inherit;
@@ -161,6 +183,14 @@ ul
       padding-right: 15px;
     .nav-icon-right
       padding-left: 15px;
+  .brand-logo
+    left: auto !important
+
+.nav-wrapper
+.container
+  @media (max-width: 992px) 
+    width: 98%;
+  
 
 nav
   line-height: normal;
@@ -169,10 +199,13 @@ nav
   ul
     a
     .nav-menu-item
-      @media (max-width: 1200px)
+      @media (max-width: 1265px)
         font-size: 0.8em;
         padding-left: 10px;
         padding-right: 10px
+      @media (max-width: 1060px)
+        padding-left: 5px;
+        padding-right: 5px
 
     
 

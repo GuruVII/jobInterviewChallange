@@ -1,12 +1,21 @@
 <template>
   <div id="app">
-    <nav class="light-blue lighten-1" role="navigation">
-      <div class="top-bar"> 
+    <div class="top-bar">
+      <div class="container">
+        <div class="row">
+          <p class="left"><span class="top-bar-border">040 666 296</span><a href="mailto:info@idoktor.si">info@idoktor.si</a></p>
+          <a href="#"><img class="right hide-on-small-only" src="./assets/tw.png"></a>
+          <a href="#"><img class="right hide-on-small-only" src="./assets/fb.png"></a>
+          <a href="#"><img class="right hide-on-small-only" src="./assets/inst.png"></a>
+          <p class="right address">Center Murgle, <span class="hide-on-med-and-down">Cesta v mestni log 55/e40,</span> Ljubljana</p>  
+        </div>
       </div>
+    </div>
+    <nav class="light-blue lighten-1" role="navigation">
       <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
       <ul class="hide-on-med-and-down right">
         <li><a href="#">Domov</a></li>
-        <li><a href="#">Serivs</a></li>
+        <li><a href="#">Servis</a></li>
         <li><a href="#">Apple dodatki</a></li>
         <li><a href="#">Apple rezervni deli</a></li>
         <li><a href="#">Ovitki po naročilu</a></li>
@@ -65,25 +74,43 @@ export default {
 <style src="materialize-css/dist/css/materialize.min.css"></style>
 <style lang="sass">
 h1, h2 
-  font-weight: normal
+  font-weight: normal;
 
 
 ul 
-  list-style-type: none
-  padding: 0
+  list-style-type: none;
+  padding: 0;
 
 
 li 
-  display: inline-block
-  margin: 0 10px
+  display: inline-block;
+  margin: 0 10px;
 
-
-a 
-  color: purple
-
-nav
-  ul
+.dropdown-content
     li
-      margin: 0px
+      margin: 0px;
+      & > a
+        color:  #9B9B9B;
+
+.top-bar
+  background-color: #222222;
+  color: #EEEEEE;
+  min-height: 30px;
+  .row
+    margin: 0px;
+  .top-bar-border
+    border-right: 1px solid #EEEEEE;
+    padding-right: 10px;
+  a 
+    color: #EEEEEE;
+    padding-left: 10px;
+  .address
+    padding-right: 20px;
+    @media (max-width: 440px)
+       display: none;
+  img
+    padding-left: 10px;
+    height: 25px;
+    margin-top: 13px;
 
 </style>

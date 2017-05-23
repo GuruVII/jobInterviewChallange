@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  <!-- the top black bar -->
     <div class="top-bar">
       <div class="container">
         <div class="row">
@@ -13,23 +14,33 @@
     </div>
     <nav class="white z-depth-0" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo"><img src="./assets/logo.png"></a>
-        <ul class="hide-on-med-and-down right nav-menu">
-          <li><a href="#">Domov</a></li>
-          <li><a href="#">Servis</a></li>
-          <li><a href="#">Apple dodatki</a></li>
-          <li><a href="#">Apple rezervni deli</a></li>
-          <li><a href="#">Ovitki po naročilu</a></li>
-        </ul>
+        <div class="row">
+          <a id="logo-container" href="#" class="brand-logo"><img src="./assets/logo.png"></a>
+          <div class="right nav-menu icon-div">
+            <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i>
+          </div>
+          <div class="right nav-menu icon-div">
+            <i class="material-icons nav-icons nav-icon-left">search</i> 
+          </div>
+          <!-- navbar links -->
+          <ul class="hide-on-med-and-down right nav-menu nav-menu-items">
+            <li><a href="#" class="nav-menu-item">Domov</a></li>
+            <li><a href="#" class="nav-menu-item">Servis</a></li>
+            <li><a href="#" class="nav-menu-item">Apple dodatki</a></li>
+            <li><a href="#" class="nav-menu-item">Apple rezervni deli</a></li>
+            <li><a href="#" class="nav-menu-item">Ovitki po naročilu</a></li>
+          </ul>
+          <!-- mobile dropdown menu content -->
+          <ul id="nav-mobile" class="dropdown-content">
+            <li><a href="#">Domov</a></li>
+            <li><a href="#">Serivs</a></li>
+            <li><a href="#">Apple dodatki</a></li>
+            <li><a href="#">Apple rezervni deli</a></li>
+            <li><a href="#">Ovitki po naročilu</a></li>
+          </ul>        
+          <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button left"><i class="material-icons">menu</i></a>
+        </div>
 
-        <ul id="nav-mobile" class="dropdown-content">
-          <li><a href="#">Domov</a></li>
-          <li><a href="#">Serivs</a></li>
-          <li><a href="#">Apple dodatki</a></li>
-          <li><a href="#">Apple rezervni deli</a></li>
-          <li><a href="#">Ovitki po naročilu</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button"><i class="material-icons">menu</i></a>
     </div>
     </nav>
     <!--<footer class="page-footer orange">
@@ -87,6 +98,7 @@ li
   display: inline-block;
   margin: 0 10px;
 
+/* dropdown menu on mobile */
 .dropdown-content
     li
       margin: 0px;
@@ -98,6 +110,7 @@ ul
     & > a
       color:  #413f40;
 
+/* black bar on top of the page */
 .top-bar
   background-color: #222222;
   color: #EEEEEE;
@@ -116,20 +129,51 @@ ul
        display: none;
   img
     padding-left: 10px;
-    height: 25px;
-    margin-top: 13px;
+    height: 20px;
+    margin-top: 15px;
 
+/* navigation menu */
 .nav-wrapper
   img
     width: 50%;
     padding-top: 25px;
     padding-bottom: 25px;
+    @media (max-width: 650px)
+      width: 60%;
+      padding-top: 0px;
+      padding-bottom: 0px;
   .nav-menu
-    padding-top: 15px;
-    padding-bottom: 25px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    @media (max-width: 650px)
+      margin-top: 0px;
+      margin-bottom: 0px;
+  .icon-div
+    margin-top: 35px;
+    @media (max-width: 650px)
+      margin-top: 0px;
+    .nav-icons
+      color: #666666;
+      height: inherit;
+      line-height: normal;
+    .nav-icon-left
+      border-right: #00aeef solid 2px;
+      padding-right: 15px;
+    .nav-icon-right
+      padding-left: 15px;
+
 nav
+  line-height: normal;
   a
     color: #413f40;
+  ul
+    a
+    .nav-menu-item
+      @media (max-width: 1200px)
+        font-size: 0.8em;
+        padding-left: 10px;
+        padding-right: 10px
+
     
 
 </style>

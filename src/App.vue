@@ -47,6 +47,7 @@
     <div class="container">
       <!-- item group banner -->
       <banner></banner>
+      <product></product>
     </div>
     
 
@@ -86,10 +87,14 @@
 <script>
 
 import banner from './components/banner.vue'
+import product from './components/product.vue'
 
 export default {
   name: 'app',
-  components: {banner}
+  components: {
+    banner,
+    product
+  }
 }
 </script>
 <style src="materialize-css/dist/css/materialize.min.css"></style>

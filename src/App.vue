@@ -44,6 +44,12 @@
 
     </div>
     </nav>
+    <div class="container">
+      <!-- item group banner -->
+      <banner></banner>
+    </div>
+    
+
     <!--<footer class="page-footer orange">
       <div class="container">
         <div class="row">
@@ -79,9 +85,11 @@
 
 <script>
 
+import banner from './components/banner.vue'
 
 export default {
-  name: 'app'
+  name: 'app',
+  components: {banner}
 }
 </script>
 <style src="materialize-css/dist/css/materialize.min.css"></style>
@@ -147,8 +155,9 @@ ul
     @media (max-width: 600px)
       width: auto;
       height: 56px;
-      padding-top: 0px;
-      padding-bottom: 0px;
+    @media (max-width: 420px)
+      height: 30px;
+      margin-top: 13px;
   .nav-menu
     margin-top: 40px;
     margin-bottom: 25px;

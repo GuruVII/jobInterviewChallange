@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-		<div class="col s12 m9 offset-m1">
+		<div class="col s12 xl9 offset-xl1">
 			<div class="card horizontal z-depth-0">
 				<div class="card-image">
 					<img src="./../assets/product.png">
@@ -8,7 +8,7 @@
 				<div class="card-stacked">
 					<div class="card-content">
 					<!-- Product name -->
-						<div class="product-information">
+						<div class="product-information name">
 							<h5>Slimfist usnjen ovitek</h5>
 							<h6>Ime Znamke</h6>
 						</div>
@@ -22,12 +22,12 @@
 									<div class="circle-margin"></div>
 									<div class="circle red-circle"></div>
 								</div>
-								<div class="col s12 m12 l12 xl8 ">
+								<div class="col s12 m12 l12 xl8">
 									<div class="float-right-left">
 									<span class="quantity-text">KOLIČINA</span>
 									<a class="btn z-depth-0 right">
 										<i class="material-icons tiny">add</i>
-									</a><span class="quantity center-align right">2</span><a class="btn z-depth-0">
+									</a><span class="quantity center-align right">02</span><a class="btn z-depth-0">
 										<i class="material-icons tiny">remove</i>
 									</a>
 									</div>
@@ -35,12 +35,19 @@
 							</div>
 						</div>
 						<!-- price -->
-						<div class="product-information">
-							<p>CENA</p>
+						<div class="product-information price">
+							<span class="discount text">CENA: 9,99 €</span><span class="normal text">14,99 €</span> 
+							<a class="btn button z-depth-0 float-right-none"><span class="hide-text">DODAJ </span>V KOŠARO</a>
 						</div>
 						<!-- colour selection -->
-						<div class="product-information">
-							<p>IZBIRA BARVE</p>
+						<div class="product-information color">
+							<div class="row">
+								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
+								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
+								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
+								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
+								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
+							</div>
 						</div>
 					</div>
 					</div>
@@ -57,6 +64,10 @@
 <style lang="sass">
 .card
 	.card-content
+		padding-top: 0px;
+	&.horizontal
+		.card-image
+			max-width: 40%;
 		padding: 0px;
 		margin: 0px 24px;
 		h5
@@ -67,18 +78,18 @@
 				margin-top: 20px;
 				@media(max-width: 1201px)
 					display: inline;
-					//this is done, becuase I want "količina" first on the right and then switch to the left
-				.float-right-left
+					
+		.product-information
+			//this is done, becuase I want "količina" first on the right and then switch to the left
+			.float-right-left
 					float: right !important;
 					@media(max-width: 1201px)
 						float: left !important;
 						margin-top: 10px;
-
-
-
-		.product-information
 			border-bottom: 1px solid #DDDDDD;
 			padding: 25px 0px;
+			&.name
+				padding-top: 0px
 			h5
 				color: #575757;
 			h6
@@ -111,7 +122,6 @@
 				color: #616161;
 				@media (max-width: 428px)
 					display: none;
-
 			.btn
 				padding: 0px 8.25px;
 				background-color: #cccccc;
@@ -119,9 +129,46 @@
 				.material-icons
 					color: #575757;
 					line-height: none;
-	&.horizontal
-		.card-image
-			max-width: 40%;
+			&.price
+				.text
+					color: #616161;
+					font-size: 1.3em;
+					line-height: 35px;
+				.discount
+					font-weight: bold;
+				.normal
+					margin-left: 10px;
+					text-decoration: line-through;
+				.button
+					background-color: #01afef; 
+					padding: 0px 30px;
+					@media(max-width: 1325px)
+						padding: 0px 15px;
+					@media(max-width: 1219px)
+							padding: 0px 30px;
+					@media(max-width: 440px)
+						padding: 0px 15px;
+
+					.hide-text
+						@media(max-width: 1499px)
+							display: none;
+						@media(max-width: 1219px)
+							display: inline
+						@media(max-width: 440px)
+							display: none;
+
+					&.float-right-none
+						float: right !important;
+						@media(max-width: 1219px)
+							float: none !important;
+			&.color
+				img
+					max-height: 60px;
+					border: 1px solid #DDDDDD;
+
+					
+
+
 
 
 

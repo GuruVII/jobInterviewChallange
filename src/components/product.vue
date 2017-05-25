@@ -15,15 +15,15 @@
 						<!-- color and quantity -->
 						<div class="product-information">
 							<div class="row valign-wrapper">
-								<div class="col l12 xl4 valign-wrapper">
+								<div class="col s12 m12 l12 xl4 valign-wrapper">
 									<span class="color-text">BARVA</span>
 									<div class="circle-margin"></div>
 									<div class=" circle blue-circle"></div>
 									<div class="circle-margin"></div>
 									<div class="circle red-circle"></div>
 								</div>
-								<div class="col l12 xl8">
-									<div class="right">
+								<div class="col s12 m12 l12 xl8 ">
+									<div class="float-right-left">
 									<span class="quantity-text">KOLIČINA</span>
 									<a class="btn z-depth-0 right">
 										<i class="material-icons tiny">add</i>
@@ -65,6 +65,17 @@
 		.row
 			&.valign-wrapper
 				margin-top: 20px;
+				@media(max-width: 1201px)
+					display: inline;
+					//this is done, becuase I want "količina" first on the right and then switch to the left
+				.float-right-left
+					float: right !important;
+					@media(max-width: 1201px)
+						float: left !important;
+						margin-top: 10px;
+
+
+
 		.product-information
 			border-bottom: 1px solid #DDDDDD;
 			padding: 25px 0px;
@@ -85,7 +96,6 @@
 					background-color: #ff9c83;
 				&.blue-circle
 					background-color: #2ce0fb;
-
 			.quantity
 				border: 1px solid #cccccc;
 				width: 36px;
@@ -98,7 +108,9 @@
 					padding-top: 5px;
 			.quantity-text
 				margin-right: 10px;
-				color: #616161
+				color: #616161;
+				@media (max-width: 428px)
+					display: none;
 
 			.btn
 				padding: 0px 8.25px;

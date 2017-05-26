@@ -2,13 +2,18 @@
 	<div class="row">
 		<div class="col s12 xl9 offset-xl1">
 			<div class="card horizontal product-card z-depth-0">
+			<!-- product name only visible on devices with width < 600px -->
+				<div class="name-top hide-on-med-and-up">
+								<h5>Slimfist usnjen ovitek</h5>
+								<h6>Ime Znamke</h6>
+				</div>
 				<div class="card-image">
 					<img src="./../assets/product.png">
 				</div> 
 				<div class="card-stacked">
 					<div class="card-content">
 					<!-- Product name -->
-						<div class="product-information name">
+						<div class="product-information name hide-on-small-only">
 							<h5>Slimfist usnjen ovitek</h5>
 							<h6>Ime Znamke</h6>
 						</div>
@@ -38,14 +43,12 @@
 							<div><a class="btn button z-depth-0"><span class="hide-text">DODAJ </span>V KOŠARO</a></div>
 						</div>
 						<!-- colour selection -->
-						<div class="product-information color">
-							<div class="row">
-								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
-								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
-								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
-								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
-								<div class="col s5 m2"><img src="./../assets/tinyPhoneBlue.png"></div>
-							</div>
+						<div class="product-information color-select">
+								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
+								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
+								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
+								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
+								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
 						</div>
 					</div>
 					</div>
@@ -61,11 +64,21 @@
 </script>
 <style lang="sass">
 .card
+	.name-top
+		align-self: flex-start;
+		h5
+			color: #575757;
+		h6
+			color: #a0a0a0;
 	.card-content
 		padding-top: 0px;
 	&.product-card
 		@media(max-width: 600px)
-			display: inline;
+			display: flex;
+			flex-flow: column wrap
+			justify-content: center;
+			align-items: center;
+			
 		.card-image
 			max-width: 40%;
 		padding: 0px;
@@ -80,6 +93,8 @@
 					display: inline;
 					
 		.product-information
+			border-bottom: 1px solid #DDDDDD;
+			padding: 25px 0px;
 			&.color-quantity, .quantity-selector, 
 					display: flex;
 					flex-flow: row wrap;
@@ -87,17 +102,15 @@
 			justify-content: space-between;
 			.quantity-selector
 				justify-content: flex-end;
-			border-bottom: 1px solid #DDDDDD;
-			padding: 25px 0px;
-			&.name
+			&.name, &.name-top
 				padding-top: 0px
+			.color-text
+				color: #616161;
+				margin-right: 10px;
 			h5
 				color: #575757;
 			h6
 				color: #a0a0a0;
-			.color-text
-				color: #616161;
-				margin-right: 10px;
 			.circle-margin
 				margin-left: 1px;
 			.circle
@@ -146,7 +159,7 @@
 				.button
 					background-color: #01afef; 
 					padding: 0px 30px;
-			&.color
+			&.color-select
 				img
 					max-height: 60px;
 					border: 1px solid #DDDDDD;

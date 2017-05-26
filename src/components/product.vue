@@ -1,6 +1,5 @@
 <template>
-	<div class="row">
-		<div class="col s12 xl9 offset-xl1">
+	
 			<div class="card horizontal product-card z-depth-0">
 			<!-- product name only visible on devices with width < 600px -->
 				<div class="name-top hide-on-med-and-up">
@@ -39,7 +38,7 @@
 						</div>
 						<!-- price -->
 						<div class="product-information price">
-							<div><span class="discount text">CENA: 109,99 €</span><span class="normal text">114,99 €</span></div>
+							<div><span class="discount text">CENA: 109,99 €</span><span class="regular text">114,99 €</span></div>
 							<div><a class="btn button z-depth-0"><span class="hide-text">DODAJ </span>V KOŠARO</a></div>
 						</div>
 						<!-- colour selection -->
@@ -54,8 +53,6 @@
 					</div>
 				</div>
 		   </div>
-		</div>
-	</div>
 </template>
 <script>
 	export default {
@@ -80,9 +77,9 @@
 			align-items: center;
 			
 		.card-image
-			width: 40%;
+			width: 45%;
 		padding: 0px;
-		margin: 0px 24px;
+		margin: 0px 0px 0px 24px;
 		h5
 			margin-top: 0px;
 			margin-bottom: 0px;	
@@ -153,9 +150,13 @@
 					line-height: 35px;
 				.discount
 					font-weight: bold;
-				.normal
+					word-break: keep-all;
+					white-space: nowrap;
+				.regular
 					margin-left: 10px;
 					text-decoration: line-through;
+					word-break: keep-all ;
+					white-space: nowrap;
 				.button
 					background-color: #01afef; 
 					padding: 0px 30px;

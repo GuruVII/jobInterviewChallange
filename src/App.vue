@@ -47,7 +47,16 @@
     <div class="container">
       <!-- item group banner -->
       <banner></banner>
-      <product></product>
+      <div class="row">
+      <!-- product information -->
+        <div class="col s12 m12 l9 xl8 offset-xl1">
+          <product></product>
+        </div>
+      <!-- side menu -->
+        <div class="col l3 xl2 hide-on-med-and-down side-menu-position">
+          <side-menu></side-menu>
+        </div>
+      </div>
     </div>
     
 
@@ -88,12 +97,14 @@
 
 import banner from './components/banner.vue'
 import product from './components/product.vue'
+import sideMenu from './components/sideMenu.vue'
 
 export default {
   name: 'app',
   components: {
     banner,
-    product
+    product,
+    sideMenu
   }
 }
 </script>
@@ -220,6 +231,10 @@ nav
       @media (max-width: 1060px)
         padding-left: 5px;
         padding-right: 5px
+/*other*/
+.side-menu-position
+  margin-top: 25px;
+  padding-left: 0px !important;
 
     
 

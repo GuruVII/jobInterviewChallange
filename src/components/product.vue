@@ -1,7 +1,7 @@
 <template>
 	<div class="row">
 		<div class="col s12 xl9 offset-xl1">
-			<div class="card horizontal z-depth-0">
+			<div class="card horizontal product-card z-depth-0">
 				<div class="card-image">
 					<img src="./../assets/product.png">
 				</div> 
@@ -13,31 +13,29 @@
 							<h6>Ime Znamke</h6>
 						</div>
 						<!-- color and quantity -->
-						<div class="product-information">
-							<div class="row valign-wrapper">
-								<div class="col s12 m12 l12 xl4 valign-wrapper">
-									<span class="color-text">BARVA</span>
-									<div class="circle-margin"></div>
-									<div class=" circle blue-circle"></div>
-									<div class="circle-margin"></div>
-									<div class="circle red-circle"></div>
-								</div>
-								<div class="col s12 m12 l12 xl8">
-									<div class="float-right-left">
-									<span class="quantity-text">KOLIČINA</span>
-									<a class="btn z-depth-0 right">
-										<i class="material-icons tiny">add</i>
-									</a><span class="quantity center-align right">02</span><a class="btn z-depth-0">
-										<i class="material-icons tiny">remove</i>
-									</a>
-									</div>
+						<div class="product-information color-quantity">
+							<div class="color valign-wrapper">
+								<span class="color-text">BARVA</span>
+								<div class="circle-margin"></div>
+								<div class=" circle blue-circle"></div>
+								<div class="circle-margin"></div>
+								<div class="circle red-circle"></div>
+							</div>
+							<div>
+								<div class="quantity-selector">
+								<span class="quantity-text valign-wrapper">KOLIČINA</span>
+								<a class="btn z-depth-0 right">
+									<i class="material-icons tiny">add</i>
+								</a><span class="quantity center-align right">2</span><a class="btn z-depth-0">
+									<i class="material-icons tiny">remove</i>
+								</a>
 								</div>
 							</div>
 						</div>
 						<!-- price -->
 						<div class="product-information price">
-							<span class="discount text">CENA: 9,99 €</span><span class="normal text">14,99 €</span> 
-							<a class="btn button z-depth-0 float-right-none"><span class="hide-text">DODAJ </span>V KOŠARO</a>
+							<div><span class="discount text">CENA: 109,99 €</span><span class="normal text">114,99 €</span></div>
+							<div><a class="btn button z-depth-0"><span class="hide-text">DODAJ </span>V KOŠARO</a></div>
 						</div>
 						<!-- colour selection -->
 						<div class="product-information color">
@@ -65,7 +63,9 @@
 .card
 	.card-content
 		padding-top: 0px;
-	&.horizontal
+	&.product-card
+		@media(max-width: 600px)
+			display: inline;
 		.card-image
 			max-width: 40%;
 		padding: 0px;
@@ -80,12 +80,13 @@
 					display: inline;
 					
 		.product-information
-			//this is done, becuase I want "količina" first on the right and then switch to the left
-			.float-right-left
-					float: right !important;
-					@media(max-width: 1201px)
-						float: left !important;
-						margin-top: 10px;
+			&.color-quantity, .quantity-selector, 
+					display: flex;
+					flex-flow: row wrap;
+			&.color-quantity
+			justify-content: space-between;
+			.quantity-selector
+				justify-content: flex-end;
 			border-bottom: 1px solid #DDDDDD;
 			padding: 25px 0px;
 			&.name
@@ -130,6 +131,9 @@
 					color: #575757;
 					line-height: none;
 			&.price
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: space-between;
 				.text
 					color: #616161;
 					font-size: 1.3em;
@@ -142,25 +146,6 @@
 				.button
 					background-color: #01afef; 
 					padding: 0px 30px;
-					@media(max-width: 1325px)
-						padding: 0px 15px;
-					@media(max-width: 1219px)
-							padding: 0px 30px;
-					@media(max-width: 440px)
-						padding: 0px 15px;
-
-					.hide-text
-						@media(max-width: 1499px)
-							display: none;
-						@media(max-width: 1219px)
-							display: inline
-						@media(max-width: 440px)
-							display: none;
-
-					&.float-right-none
-						float: right !important;
-						@media(max-width: 1219px)
-							float: none !important;
 			&.color
 				img
 					max-height: 60px;

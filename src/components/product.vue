@@ -1,5 +1,5 @@
 <template>
-	
+		<div>
 			<div class="card horizontal product-card z-depth-0">
 			<!-- product name only visible on devices with width < 600px -->
 				<div class="name-top hide-on-med-and-up">
@@ -52,7 +52,16 @@
 					</div>
 					</div>
 				</div>
-		   </div>
+				<div class="row" id="product-description">
+					<h6>OPIS</h6>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec sem eget mi eleifend sodales. Ut dictum, est vitae fermentum aliquam, libero nisi blandit orci, in varius arcu risus id libero. Phasellus mollis neque quis purus convallis condimentum. Nunc sagittis velit ac hendrerit scelerisque. Curabitur efficitur convallis elit vitae blandit. Nullam convallis facilisis lacus, id varius tortor posuere eget. Quisque in dapibus sem, nec egestas ante. Mauris vel quam id ligula consectetur dapibus a et tellus. Maecenas eget facilisis nisi. Aliquam placerat iaculis dolor vitae luctus.
+
+						In volutpat sapien et lectus dignissim, sed porttitor metus placerat. Aenean a ligula dapibus, volutpat risus nec, lobortis magna. Nunc convallis sodales dapibus. Nam feugiat arcu arcu, at dignissim turpis rhoncus ac. Duis semper est nec justo malesuada dictum. Vivamus id elementum tellus. Vestibulum rhoncus ligula justo. Aenean eu orci vitae nisi lobortis eleifend ac eget erat. Donec feugiat urna id ullamcorper tempor. 
+					</p>
+				</div>
+			</div>
+		   
 </template>
 <script>
 	export default {
@@ -77,7 +86,7 @@
 			align-items: center;
 			
 		.card-image
-			width: 45%;
+			width: 338px;
 		padding: 0px;
 		margin: 0px 0px 0px 24px;
 		h5
@@ -164,6 +173,15 @@
 				img
 					max-height: 60px;
 					border: 1px solid #DDDDDD;
+#product-description
+	margin-left: 24px;
+	h6
+		color: #3a3839;
+		padding-bottom: 2px;
+		border-bottom: 2px solid #01afef;
+		display: inline-block;
+	p 
+		color: #999999;
 
 					
 

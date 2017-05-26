@@ -57,6 +57,11 @@
           <side-menu></side-menu>
         </div>
       </div>
+      <div class="row">
+        <div class="col s12 m12 l9 xl8 offset-xl1">
+          <similiar-items></similiar-items>
+        </div>
+      </div>
     </div>
     
 
@@ -98,13 +103,15 @@
 import banner from './components/banner.vue'
 import product from './components/product.vue'
 import sideMenu from './components/sideMenu.vue'
+import similiarItems from './components/similiarItems.vue'
 
 export default {
   name: 'app',
   components: {
     banner,
     product,
-    sideMenu
+    sideMenu,
+    similiarItems
   }
 }
 </script>

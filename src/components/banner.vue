@@ -18,4 +18,6 @@
 		.banner-text
 			margin-top: 50px
 			margin-bottom: 50px;
+			@media(max-width: 600px)
+				font-size: 1.3em
 </style>

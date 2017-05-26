@@ -80,7 +80,7 @@
 			align-items: center;
 			
 		.card-image
-			max-width: 40%;
+			width: 40%;
 		padding: 0px;
 		margin: 0px 24px;
 		h5

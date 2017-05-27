@@ -4,7 +4,7 @@ import axios from 'axios';
 import App from './App.vue';
 
 $(document ).ready(function(){
-	
+	$('.modal').modal();
 })
 
 new Vue({

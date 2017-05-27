@@ -54,11 +54,13 @@
 				</div>
 				<div class="row" id="product-description">
 					<h6>OPIS</h6>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec sem eget mi eleifend sodales. Ut dictum, est vitae fermentum aliquam, libero nisi blandit orci, in varius arcu risus id libero. Phasellus mollis neque quis purus convallis condimentum. Nunc sagittis velit ac hendrerit scelerisque. Curabitur efficitur convallis elit vitae blandit. Nullam convallis facilisis lacus, id varius tortor posuere eget. Quisque in dapibus sem, nec egestas ante. Mauris vel quam id ligula consectetur dapibus a et tellus. Maecenas eget facilisis nisi. Aliquam placerat iaculis dolor vitae luctus.
-
-						In volutpat sapien et lectus dignissim, sed porttitor metus placerat. Aenean a ligula dapibus, volutpat risus nec, lobortis magna. Nunc convallis sodales dapibus. Nam feugiat arcu arcu, at dignissim turpis rhoncus ac. Duis semper est nec justo malesuada dictum. Vivamus id elementum tellus. Vestibulum rhoncus ligula justo. Aenean eu orci vitae nisi lobortis eleifend ac eget erat. Donec feugiat urna id ullamcorper tempor. 
-					</p>
+					<div class="product-description-text">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec sem eget mi eleifend sodales. Ut dictum, est vitae fermentum aliquam, libero nisi blandit orci, in varius arcu risus id libero. Phasellus mollis neque quis purus convallis condimentum. Nunc sagittis velit ac hendrerit scelerisque. Curabitur efficitur convallis elit vitae blandit. Nullam convallis facilisis lacus, id varius tortor posuere eget. Quisque in dapibus sem, nec egestas ante. Mauris vel quam id ligula consectetur dapibus a et tellus. Maecenas eget facilisis nisi. Aliquam placerat iaculis dolor vitae luctus.
+							<br>
+							In volutpat sapien et lectus dignissim, sed porttitor metus placerat. Aenean a ligula dapibus, volutpat risus nec, lobortis magna. Nunc convallis sodales dapibus. Nam feugiat arcu arcu, at dignissim turpis rhoncus ac. Duis semper est nec justo malesuada dictum. Vivamus id elementum tellus. Vestibulum rhoncus ligula justo. Aenean eu orci vitae nisi lobortis eleifend ac eget erat. Donec feugiat urna id ullamcorper tempor. 
+						</p>
+					</div>
 				</div>
 			</div>
 		   
@@ -182,6 +184,10 @@
 		display: inline-block;
 	p 
 		color: #999999;
+		size: 1em;
+	.product-description-text
+		padding-right: 25px;
+		
 
 					
 

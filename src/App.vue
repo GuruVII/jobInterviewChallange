@@ -64,37 +64,64 @@
       </div>
     </div>
     
-
-    <!--<footer class="page-footer orange">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Company Bio</h5>
-            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Settings</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Connect</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
+      <footer id="footer" class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l4 s12 footer-first-column">
+              <img class="logo-bottom" src="./assets/logo-black.png">
+              <p class="">iPhone, iPad in iPod servis Ljubljana vam nudi hitro in zanesljivo popravilo Aplle naprav. Večinoma popravilo opravimo že v roku 1 ure.</p>
+              <p>Nahajamo se v trgovskem centru murgle v Ljubljani (nad pošto)</p>
+              <div class="hide-on-small-only social-media-logo-bottom">
+                <a href="#"><img src="./assets/tw-invert.png"></a>
+                <a href="#"><img class="margin-left-15px" src="./assets/fb-invert.png"></a>
+                <a href="#"><img class="margin-left-15px" src="./assets/inst-invert.png"></a>
+              </div>
+            </div>
+            <div class="col l2 s12 footer-second-column">
+              <h6 class="">POVEZAVE</h6>
+              <ul>
+                <li class=""><a class="" href="#!">Domov</a></li>
+                <li class=""><a class="" href="#!">Servis</a></li>
+                <li class=""><a class="" href="#!">Apple Dodatki</a></li>
+                <li class=""><a class="" href="#!">Apple rezervni deli</a></li>
+                <li class=""><a class="" href="#!">Ovitek po naročilu</a></li>
+                <li class=""><a class="" href="#!">Blog</a></li>
+                <li class=""><a class="" href="#!">Kontakt</a></li>
+              </ul>
+              <ul>
+                <li class=""><a class="" href="#!">Moj Račun</a></li>
+                <li class=""><a class="" href="#!">Zgodovina Transkacij</a></li>
+              </ul>
+            </div>
+            <div class="col l2 s12">
+              <h6 class="">OSTALO</h6>
+              <ul>
+                <li><a class="" href="#!">Link 1</a></li>
+                <li><a class="" href="#!">Link 2</a></li>
+                <li><a class="" href="#!">Link 3</a></li>
+                <li><a class="" href="#!">Link 4</a></li>
+              </ul>
+            </div>
+            <div class="col l4 s12">
+              <h6 class="">PRIJAVA NA E-NOVICE</h6>
+              <ul>
+                <li><a class="" href="#!">Link 1</a></li>
+                <li><a class="" href="#!">Link 2</a></li>
+                <li><a class="" href="#!">Link 3</a></li>
+                <li><a class="" href="#!">Link 4</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </footer> -->
+        <div class="footer-copyright">
+            <div class="container">
+              <div>
+                iDoktor  &nbsp;|&nbsp;&nbsp; iPhone, iPad, iPod servis Center Murgle Ljubljana
+              </div>
+              <div>Made as part of a job interview</div>
+          </div>
+        </div>  
+      </footer>
   </div>
 </template>
 
@@ -129,6 +156,8 @@ ul
 li 
   display: inline-block;
   margin: 0 10px;
+.margin-left-15px
+  margin-left: 15px;
 
 /* dropdown menu on mobile */
 .dropdown-content
@@ -238,11 +267,39 @@ nav
       @media (max-width: 1060px)
         padding-left: 5px;
         padding-right: 5px
+/* footer */
+.page-footer
+  font-size: 0.9em;
+  background-color: #f6f6f6;
+  color: #666666;
+  .footer-first-column
+    .logo-bottom
+      max-width: 40%;
+    .social-media-logo-bottom
+      height: 24px;
+      img
+        height: 24px;
+  .footer-second-column
+    ul   
+      li
+        display: list-item;
+        list-style-type: disc;
+
+
+
+
+  .footer-copyright
+    background-color: #222222;
+    .container
+      display: flex;
+      justify-content: space-between;
+
+
+  
+
 /*other*/
 .side-menu-position
   margin-top: 25px;
   padding-left: 0px !important;
-
-    
 
 </style>

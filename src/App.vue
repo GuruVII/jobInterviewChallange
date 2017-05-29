@@ -93,23 +93,27 @@
                 <li class=""><a class="" href="#!">Zgodovina Transkacij</a></li>
               </ul>
             </div>
-            <div class="col l2 s12">
+            <div class="col l2 s12 footer-third-column">
               <h6 class="">OSTALO</h6>
               <ul>
-                <li><a class="" href="#!">Link 1</a></li>
-                <li><a class="" href="#!">Link 2</a></li>
-                <li><a class="" href="#!">Link 3</a></li>
-                <li><a class="" href="#!">Link 4</a></li>
+                <li><a class="" href="#!">O nas</a></li>
+                <li><a class="" href="#!">Dostava</a></li>
+                <li><a class="" href="#!">Pogoji poslovanja</a></li>
+                <li><a class="" href="#!">Piškotki</a></li>
+                <li><a class="" href="#!">Vračila</a></li>
               </ul>
             </div>
             <div class="col l4 s12">
               <h6 class="">PRIJAVA NA E-NOVICE</h6>
-              <ul>
-                <li><a class="" href="#!">Link 1</a></li>
-                <li><a class="" href="#!">Link 2</a></li>
-                <li><a class="" href="#!">Link 3</a></li>
-                <li><a class="" href="#!">Link 4</a></li>
-              </ul>
+              <form>
+                <input id="last_name" type="text" class="validate newsletter-form-input" placeholder="vaše ime ..."/>
+                <input id="last_name" type="text" class="validate newsletter-form-input" placeholder="vaš email ..."/>
+                <div>
+                  <input type="checkbox" class="filled-in" id="splosni-pogoji"/>
+                  <label for="splosni-pogoji">Strinjam se s <a href="#">splošnimi pogoji</a></label>
+                </div>
+                <a href="#" class="btn button">Prijavi se</a>
+              </form>
             </div>
           </div>
         </div>
@@ -144,6 +148,7 @@ export default {
 </script>
 <style src="materialize-css/dist/css/materialize.min.css"></style>
 <style lang="sass">
+
 h1, h2 
   font-weight: normal;
 
@@ -279,11 +284,45 @@ nav
       height: 24px;
       img
         height: 24px;
-  .footer-second-column
+  .footer-second-column,.footer-third-column
     ul   
       li
         display: list-item;
         list-style-type: disc;
+  form
+
+    width: 90%;
+    display: flex
+    flex-flow: wrap column;
+    justify-content: flex-start;
+    justify-content: flex-end;
+    label
+      color: #666666
+      a
+        color: #666666;
+    .newsletter-form-input
+      background-color: white;
+      padding-left: 10px;
+      border: none;
+      &:focus
+        box-shadow: none;
+        border-bottom: none;
+      &::-webkit-input-placeholder
+        color: #666666;
+        margin-left: 10px;
+      &::-moz-placeholder
+        color: #666666;
+        margin-left: 10px;
+      &:-moz-placeholder
+        color: #666666;
+        margin-left: 10px;
+    .filled-in[type="checkbox"]:checked + label::after
+      background-color: #01afef;
+    .button
+      margin-top: 10px;
+      background-color: #01afef; 
+      padding: 0px 30px;
+      align-self: flex-end;
 
 
 

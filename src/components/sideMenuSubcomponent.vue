@@ -21,7 +21,7 @@
 		display: list-item;
 		color: #999999;
 		white-space: nowrap;
-		&.selected
+		.selected
 			color: #2c97de;
 			white-space: nowrap;
 		.hide-word

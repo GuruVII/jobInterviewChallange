@@ -17,7 +17,7 @@
         <div class="row">
           <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button left"><i class="material-icons">menu</i></a>
           <a id="logo-container" href="#" class="brand-logo left"><img src="./assets/logo.png"></a>
-          <div class="circle-number right nav-menu icon-div center-align"><div class="circle-number-text">1</div></div>
+          <div class="circle-number right nav-menu icon-div center-align">1</div>
           <div class="right nav-menu icon-div">
             <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i>
           </div>
@@ -35,7 +35,7 @@
           <!-- mobile dropdown menu content -->
           <ul id="nav-mobile" class="dropdown-content">
             <li><a href="#">Domov</a></li>
-            <li><a href="#">Serivs</a></li>
+            <li><a href="#">Servis</a></li>
             <li><a href="#">Apple dodatki</a></li>
             <li><a href="#">Apple rezervni deli</a></li>
             <li><a href="#">Ovitki po naročilu</a></li>
@@ -65,7 +65,7 @@
     </div>
     
       <footer id="footer" class="page-footer">
-        <div class="container">
+        <div class="container hide-on-med-and-down">
           <div class="row">
             <div class="col l4 s12 footer-first-column">
               <img class="logo-bottom" src="./assets/logo-black.png">
@@ -112,10 +112,70 @@
                   <input type="checkbox" class="filled-in" id="splosni-pogoji"/>
                   <label for="splosni-pogoji">Strinjam se s <a href="#">splošnimi pogoji</a></label>
                 </div>
-                <a href="#" class="btn button">Prijavi se</a>
+                <button type="submit" name="action" class="btn button">Prijavi se</button>
               </form>
             </div>
           </div>
+        </div>
+        <div class="container hide-on-large-only footer-collapsible">
+          <div class="row">
+            <div class="col l4 s6">
+                <img class="logo-bottom" src="./assets/logo-black.png">
+                <p class="">iPhone, iPad in iPod servis Ljubljana vam nudi hitro in zanesljivo popravilo Apple naprav. Večinoma popravilo opravimo že v roku 1 ure.</p>
+                <p>Nahajamo se v trgovskem centru murgle v Ljubljani (nad pošto)</p>
+                <div class="social-media-logo-bottom">
+                  <a href="#"><img src="./assets/tw-invert.png"></a>
+                  <a href="#"><img class="margin-left-15px" src="./assets/fb-invert.png"></a>
+                  <a href="#"><img class="margin-left-15px" src="./assets/inst-invert.png"></a>
+                </div>
+            </div>
+          </div>
+          <ul class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header">POVEZAVE</div>
+              <div class="collapsible-body">
+                  <ul>
+                    <li class=""><a class="" href="#!">Domov</a></li>
+                    <li class=""><a class="" href="#!">Servis</a></li>
+                    <li class=""><a class="" href="#!">Apple Dodatki</a></li>
+                    <li class=""><a class="" href="#!">Apple rezervni deli</a></li>
+                    <li class=""><a class="" href="#!">Ovitek po naročilu</a></li>
+                    <li class=""><a class="" href="#!">Blog</a></li>
+                    <li class=""><a class="" href="#!">Kontakt</a></li>
+                  </ul>
+                  <ul class="my-account-collapsible">
+                    <li class=""><a class="" href="#!">Moj Račun</a></li>
+                    <li class=""><a class="" href="#!">Zgodovina Transkacij</a></li>
+                  </ul>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">OSTALO</div>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a class="" href="#!">O nas</a></li>
+                  <li><a class="" href="#!">Dostava</a></li>
+                  <li><a class="" href="#!">Pogoji poslovanja</a></li>
+                  <li><a class="" href="#!">Piškotki</a></li>
+                  <li><a class="" href="#!">Vračila</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">PRIJAVA NA E-NOVICE</div>
+              <div class="collapsible-body">
+                <form>
+                  <input id="last_name-collapsible" type="text" class="validate newsletter-form-input" placeholder="vaše ime ..."/>
+                  <input id="last_name-collapsible" type="text" class="validate newsletter-form-input" placeholder="vaš email ..."/>
+                  <div>
+                    <input type="checkbox" class="filled-in" id="splosni-pogoji-collapsible"/>
+                    <label for="splosni-pogoji-collapsible">Strinjam se s <a href="#">splošnimi pogoji</a></label>
+                  </div>
+                  <button type="submit" name="action" class="btn button">Prijavi se</button>
+                </form>
+              </div>
+            </li>
+          </ul>
         </div>
         <div class="footer-copyright">
             <div class="container">
@@ -229,9 +289,10 @@ ul
     color: white;
     border-radius: 50%;
     margin-left: 10px;
-    .circle-number-text
-      font-size: 1.2em;
-      margin-top: 2px;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @media (max-width: 992px)
       margin-right: 20px;
   .icon-div
@@ -277,20 +338,16 @@ nav
   font-size: 0.9em;
   background-color: #f6f6f6;
   color: #666666;
-  .footer-first-column
-    .logo-bottom
-      max-width: 40%;
-    .social-media-logo-bottom
+  .logo-bottom
+    max-width: 40%;
+  .social-media-logo-bottom
+    img
       height: 24px;
-      img
-        height: 24px;
-  .footer-second-column,.footer-third-column
-    ul   
-      li
-        display: list-item;
-        list-style-type: disc;
+  ul   
+    li
+      display: list-item;
+      list-style-type: disc;    
   form
-
     width: 90%;
     display: flex
     flex-flow: wrap column;
@@ -324,7 +381,15 @@ nav
       padding: 0px 30px;
       align-self: flex-end;
 
-
+  .footer-collapsible
+    li
+      list-style-type: none;
+      li
+        list-style-type: disc;
+      .my-account-collapsible
+        margin-top: 10px;
+    .logo-bottom
+        width: 50%;
 
 
   .footer-copyright

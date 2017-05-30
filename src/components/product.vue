@@ -66,8 +66,19 @@
 		   
 </template>
 <script>
+	import marketcloud from "marketcloud-js";
+	import {getItemMixin} from "./../mixins/getItemMixin";
 	export default {
-  name: 'product'
+  name: 'product',
+  mixins: [getItemMixin],
+  data(){
+  	return{
+  		product: []
+  	}
+  },
+  mounted() {
+  	this.getItemMixin()
+  }
 }
 </script>
 <style lang="sass">

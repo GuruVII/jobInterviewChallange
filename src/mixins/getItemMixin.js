@@ -7,13 +7,16 @@ const getItemMixin = {
 			marketcloud.products.getById(id)
 				.then(response => {			
   					this.product = response.data;
+  					//if image is called dirrectly from the this.product the page produces and error
+  					this.image = this.product.variants[this.variant].images[0];
+
   					marketcloud.brands.getById(this.product.brand_id)
 						.then(response => {
 							console.log("The brand:",response.data);
-							this.product.brand_name = response.data.name
+							//if the brand name is made part of the product object, it doesn't show
+							this.brand = response.data.name
 							console.log("The product:",this.product);
-
-						})
+							})
 						.catch(error => {
 							console.log("Something went wrong acquring the brand",error);
 						})

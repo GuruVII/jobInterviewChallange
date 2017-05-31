@@ -4,17 +4,17 @@
 			<!-- product name only visible on devices with width < 600px -->
 				<div class="name-top hide-on-med-and-up">
 								<h5>{{product.name}}</h5>
-								<h6>{{product.brand_name}}</h6>
+								<h6>{{this.brand}}</h6>
 				</div>
 				<div class="card-image">
-					<img src="./../assets/product.png">
-				</div> 
+					<img :src="image">
+				</div>
 				<div class="card-stacked">
 					<div class="card-content">
 					<!-- Product name -->
 						<div class="product-information name hide-on-small-only">
 							<h5>{{product.name}}</h5>
-							<h6>{{product.brand_name}}</h6>
+							<h6>{{this.brand}}</h6>
 						</div>
 						<!-- color and quantity -->
 						<div class="product-information color-quantity">
@@ -70,9 +70,12 @@
   mixins: [getItemMixin],
   data(){
   	return{
+  		variant: 0,
   		product: {},
   		price: {},
-  		quantity: 0
+  		quantity: 0,
+  		brand: "",
+  		image: ""
   	}
   },
   watch: {
@@ -80,6 +83,14 @@
   		if (this.quantity < 0 ){
   			this.quantity = 0
   		}
+  	},
+  	//when product changes, the title in the banner will change as well
+  	product: { 
+  		handler: function(){
+	  		this.$emit("bannerTitleEmit", this.product.name),
+	  		console.log("title has been emited")
+  		},
+  		deep: true
   	}
   },
   mounted() {

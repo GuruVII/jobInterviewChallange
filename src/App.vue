@@ -46,11 +46,11 @@
     </nav>
     <div class="container">
       <!-- item group banner -->
-      <banner></banner>
+      <banner :banner-title="bannerTitle"></banner>
       <div class="row">
       <!-- product information -->
         <div class="col s12 m12 l9 xl8 offset-xl1">
-          <product></product>
+          <product @bannerTitleEmit="getBannerTitle"></product>
         </div>
       <!-- side menu -->
         <div class="col l3 xl2 hide-on-med-and-down side-menu-position">
@@ -203,6 +203,15 @@ export default {
     product,
     sideMenu,
     similiarItems
+  },
+  data(){
+    return{
+      bannerTitle: ""}
+  },
+  methods: {
+    getBannerTitle: function(title){
+      this.bannerTitle = title;
+    }
   }
 }
 </script>

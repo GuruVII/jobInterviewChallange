@@ -3,7 +3,7 @@
 			<div class="card horizontal product-card z-depth-0">
 			<!-- product name only visible on devices with width < 600px -->
 				<div class="name-top hide-on-med-and-up">
-								<h5>Slimfist usnjen ovitek</h5>
+								<h5>{{product.name}}</h5>
 								<h6>Ime Znamke</h6>
 				</div>
 				<div class="card-image">
@@ -13,7 +13,7 @@
 					<div class="card-content">
 					<!-- Product name -->
 						<div class="product-information name hide-on-small-only">
-							<h5>Slimfist usnjen ovitek</h5>
+							<h5>{{product.name}}</h5>
 							<h6>Ime Znamke</h6>
 						</div>
 						<!-- color and quantity -->
@@ -29,16 +29,16 @@
 								<div class="quantity-selector">
 								<span class="quantity-text valign-wrapper">KOLIČINA</span>
 								<a class="btn z-depth-0 right">
-									<i class="material-icons tiny">add</i>
-								</a><span class="quantity center-align right">2</span><a class="btn z-depth-0">
-									<i class="material-icons tiny">remove</i>
+									<i class="material-icons tiny" @click="quantity +=1">add</i>
+								</a><span class="quantity center-align right">{{quantity}}</span><a class="btn z-depth-0">
+									<i class="material-icons tiny" @click="quantity -=1">remove</i>
 								</a>
 								</div>
 							</div>
 						</div>
 						<!-- price -->
 						<div class="product-information price">
-							<div><span class="discount text">CENA: 109,99 €</span><span class="regular text">114,99 €</span></div>
+							<div><span class="discount text">CENA: {{price.discounted_price}} €</span><span class="regular text">{{price.price}} €</span></div>
 							<div><a class="btn button z-depth-0"><span class="hide-text">DODAJ </span>V KOŠARO</a></div>
 						</div>
 						<!-- colour selection -->
@@ -55,10 +55,7 @@
 				<div class="row" id="product-description">
 					<h6>OPIS</h6>
 					<div class="product-description-text">
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec sem eget mi eleifend sodales. Ut dictum, est vitae fermentum aliquam, libero nisi blandit orci, in varius arcu risus id libero. Phasellus mollis neque quis purus convallis condimentum. Nunc sagittis velit ac hendrerit scelerisque. Curabitur efficitur convallis elit vitae blandit. Nullam convallis facilisis lacus, id varius tortor posuere eget. Quisque in dapibus sem, nec egestas ante. Mauris vel quam id ligula consectetur dapibus a et tellus. Maecenas eget facilisis nisi. Aliquam placerat iaculis dolor vitae luctus.
-							<br>
-							In volutpat sapien et lectus dignissim, sed porttitor metus placerat. Aenean a ligula dapibus, volutpat risus nec, lobortis magna. Nunc convallis sodales dapibus. Nam feugiat arcu arcu, at dignissim turpis rhoncus ac. Duis semper est nec justo malesuada dictum. Vivamus id elementum tellus. Vestibulum rhoncus ligula justo. Aenean eu orci vitae nisi lobortis eleifend ac eget erat. Donec feugiat urna id ullamcorper tempor. 
+						<p v-html="product.description">
 						</p>
 					</div>
 				</div>
@@ -73,7 +70,16 @@
   mixins: [getItemMixin],
   data(){
   	return{
-  		product: []
+  		product: {},
+  		price: {},
+  		quantity: 0
+  	}
+  },
+  watch: {
+  	quantity: function() {
+  		if (this.quantity < 0 ){
+  			this.quantity = 0
+  		}
   	}
   },
   mounted() {
@@ -162,6 +168,9 @@
 				.material-icons
 					color: #575757;
 					line-height: none;
+					-webkit-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
 			&.price
 				display: flex;
 				flex-flow: row wrap;

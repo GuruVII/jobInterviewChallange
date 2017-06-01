@@ -3,33 +3,46 @@
 		<div id="search">
 			<input type="text" placeholder="Iskanje..."><div><i class="material-icons">search</i></div>
 		</div>
-		<ul id="sub-menu">
+		<!-- done is only true after a successful API call.-->
+		<ul id="sub-menu"  v-if="doneCategory">
 			<h6>KATEROGIJE</h6>
-			<li>
-				<a class="not-selected"href="#">iPhone 6/6s</a>				
+			<li v-for="item in categoryIndex">
+				<a class="not-selected" :class="{'selected' : selectedCategory(item.id, category[1])}" href="#">{{item.name}}</a>
+				<side-menu-subcomponent v-if="item.id == category[1]" :category="category"></side-menu-subcomponent>		
 			</li>
-			<li>
-				<a class="selected"href="#">iPhone 7</a>
-				<side-menu-subcomponent></side-menu-subcomponent>
-			</li>
-			<li>
-				<a class="not-selected" href="#">iPhone 7 Plus</a></li>
-			<li>
-			<a class="not-selected" href="#">iPhone 5/5s</a></li>
-			<li>
-			<a class="not-selected"href="#">iPhone 4/4s</a></li>
 		</ul>
 	</div>
 </template>
 <script>
 import sideMenuSubcomponent from './sideMenuSubcomponent.vue'
+import {getCategoriesMixin} from "./../mixins/getCategoriesMixin";
 
-	export default {
+export default {
   name: 'sideMenu',
   components: {
   	sideMenuSubcomponent
+  },
+  props: ["category", "categoryIndex", "doneCategory"],
+  mixins: [getCategoriesMixin],
+  data(){
+  	return {
+  	}
+  },
+  methods : {
+  	selectedCategory: function(categoryId, selectedCategoryID){
+  		if (categoryId == selectedCategoryID){
+  			return true
+  		}
+  		else {
+  			return false
+  		};
+  	}
+  },
+  mounted(){
+  	this.getCategoriesMixin()
   }
 }
+
 </script>
 <style lang="sass" scoped>
 #search
@@ -59,13 +72,30 @@ import sideMenuSubcomponent from './sideMenuSubcomponent.vue'
 	.not-selected
 		color: #999999;
 	.selected
-		color: #2c97de;
+		color: #2c97de !important;
 	h6
 		color: #333132;
 		font-weight: 500;
 		margin-left: 10px;
 		padding-left: 5px;
 		border-left: 2px solid #00AEEF;
+
+#sideMenuSubcomponent
+	margin-left: 10px
+	font-size: 0.8em;
+	white-space: inherit;
+	li
+		display: list-item;
+		color: #999999;
+		white-space: nowrap;
+		.selected
+			color: #2c97de;
+			white-space: nowrap;
+		.hide-word
+			@media(max-width: 1300px)
+				display: none;
+			@media(max-width: 1200px)
+				display: inline;
 
 
 </style>

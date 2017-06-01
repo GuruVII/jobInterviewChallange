@@ -54,7 +54,7 @@
         </div>
       <!-- side menu -->
         <div class="col l3 xl2 hide-on-med-and-down side-menu-position">
-          <side-menu></side-menu>
+          <side-menu :categoryIndex="categoryIndex" :category="category" :doneCategory="doneCategory"></side-menu>
         </div>
       </div>
       <div class="row">
@@ -214,7 +214,9 @@ export default {
       category: [],
       id: "",
       brandIndex:{},
-      categoryIndex: {}
+      categoryIndex: {},
+      basket: {},
+      doneCategory: false
     }
 
   },

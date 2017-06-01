@@ -8,6 +8,7 @@ const getItemListMixin = {
 			.then(response => {
 				this.itemList = [];
 			  this.itemList.push(...response.data);
+			  this.doneItemList = true;
 
 			})
 			.catch(error => {

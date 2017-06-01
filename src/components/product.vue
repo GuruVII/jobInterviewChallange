@@ -87,7 +87,6 @@
   		handler: function(){
 	  		this.$emit("bannerTitleEmit", this.product.name),
 	  		this.$emit("categoryEmit", [ this.product.id, this.product.category_id, this.product.product_type]);
-	  		console.log("title has been emited")
   		},
   		deep: true
   	},

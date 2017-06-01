@@ -11,6 +11,7 @@ const getCategoriesMixin = {
 					var id = item.id
 					this.categoryIndex[id] = item;
 				})
+				this.doneCategory = true;
 			})
 			.catch(error => {
 			  console.log("Something went wrong with getCategoriesMixin",error);

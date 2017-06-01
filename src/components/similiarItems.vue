@@ -1,6 +1,6 @@
 <template>
 	<div id="similiar-items">
-		<div class="row">
+		<div class="row" v-if="doneItemList">
 	        <div class="col s6 m4 l4 xl4" v-for="item in itemList" v-if="item.id != category[0]" @click="newProductCalled(item.id)">
 	          <div class="card z-depth-0">
 	            <div class="card-image">
@@ -44,6 +44,7 @@ export default {
    data(){
   	return {
   		itemList: [],
+  		doneItemList: false
   	}
   },
   watch: { 
@@ -59,7 +60,6 @@ export default {
   },
   methods: {
   	newProductCalled : function(id){
-  		console.log("the id has been submited")
   		this.$emit("newProductEmit", id);
   	}
   }

@@ -20,10 +20,10 @@
 						<div class="product-information color-quantity">
 							<div class="color valign-wrapper">
 								<span class="color-text">BARVA</span>
-								<div class="circle-margin"></div>
-								<div class=" circle blue-circle"></div>
-								<div class="circle-margin"></div>
-								<div class="circle red-circle"></div>
+								<div v-for="color in product.variants">
+									<div class="circle-margin"></div>
+									<div class="circle" v-bind:style="{'background-color': color.description}"></div>
+								</div>		
 							</div>
 							<div>
 								<div class="quantity-selector">
@@ -41,13 +41,9 @@
 							<div><span class="discount text">CENA: {{price.discounted_price}} €</span><span class="regular text">{{price.price}} €</span></div>
 							<div><a class="btn button z-depth-0"><span class="hide-text">DODAJ </span>V KOŠARO</a></div>
 						</div>
-						<!-- colour selection -->
-						<div class="product-information color-select">
-								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
-								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
-								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
-								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
-								<a href="#"><img src="./../assets/tinyPhoneBlue.png"></a>
+						<!-- variant selection -->
+						<div class="product-information color-select" v-if="product.has_variants">
+								<a v-for="item in product.variants" @click="changeVariants(item.id)"><img :src="item.images[0]"></a>
 						</div>
 					</div>
 					</div>
@@ -63,11 +59,11 @@
 		   
 </template>
 <script>
-	import marketcloud from "marketcloud-js";
 	import {getItemMixin} from "./../mixins/getItemMixin";
 	export default {
   name: 'product',
   mixins: [getItemMixin],
+  props: ["id"],
   data(){
   	return{
   		variant: 0,
@@ -75,7 +71,7 @@
   		price: {},
   		quantity: 0,
   		brand: "",
-  		image: ""
+  		image: "",
   	}
   },
   watch: {
@@ -84,13 +80,23 @@
   			this.quantity = 0
   		}
   	},
-  	//when product changes, the title in the banner will change as well
+  	//when product changes, we have to emit a few pieces of information
   	product: { 
   		handler: function(){
 	  		this.$emit("bannerTitleEmit", this.product.name),
+	  		this.$emit("categoryEmit", [ this.product.id, this.product.category_id, this.product.product_type]);
 	  		console.log("title has been emited")
   		},
   		deep: true
+  	},
+  	id: function(){
+  		this.getItemMixin(this.id)
+  		}
+  },
+  methods: {
+  	changeVariants : function(variant){
+  		this.variant = variant - 1
+  		this.image = this.product.variants[(variant-1)].images[0];
   	}
   },
   mounted() {
@@ -131,6 +137,8 @@
 		.product-information
 			border-bottom: 1px solid #DDDDDD;
 			padding: 25px 0px;
+			a
+				cursor: pointer;
 			&.color-quantity, .quantity-selector, 
 					display: flex;
 					flex-flow: row wrap;
@@ -153,10 +161,6 @@
 				height: 19px
 				width: 19px
 				display: inline-block;
-				&.red-circle
-					background-color: #ff9c83;
-				&.blue-circle
-					background-color: #2ce0fb;
 			.quantity
 				border: 1px solid #cccccc;
 				width: 36px;

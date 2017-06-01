@@ -50,7 +50,7 @@
       <div class="row">
       <!-- product information -->
         <div class="col s12 m12 l9 xl8 offset-xl1">
-          <product @bannerTitleEmit="getBannerTitle"></product>
+          <product @bannerTitleEmit="getBannerTitle" @categoryEmit="getCategory" :id="id"></product>
         </div>
       <!-- side menu -->
         <div class="col l3 xl2 hide-on-med-and-down side-menu-position">
@@ -59,11 +59,12 @@
       </div>
       <div class="row">
         <div class="col s12 m12 l9 xl8 offset-xl1">
-          <similiar-items></similiar-items>
+        <!-- similiar items -->
+          <similiar-items :category="category" @newProductEmit="newProductEmit"></similiar-items>
         </div>
       </div>
     </div>
-    
+    <!-- footer -->
       <footer id="footer" class="page-footer">
         <div class="container hide-on-med-and-down">
           <div class="row">
@@ -206,11 +207,22 @@ export default {
   },
   data(){
     return{
-      bannerTitle: ""}
+      bannerTitle: "",
+      category: [],
+      id: ""
+    }
+
   },
   methods: {
     getBannerTitle: function(title){
       this.bannerTitle = title;
+    },
+    getCategory: function(category){
+      this.category = [];
+      this.category.push(...category)
+    },
+    newProductEmit : function(id){
+      this.id = id;
     }
   }
 }

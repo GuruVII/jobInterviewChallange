@@ -11,7 +11,7 @@
 	            </div>
 	            <div class="card-action">
 	            	<p class="name">{{item.name}}</p>
-	              	<p class="product-type">Apple - iPhone 6/6s</p>
+	              	<p class="product-type">{{categoryIndex[item.category_id]["name"]}}</p>
 	            	<div class="card-action-bottom">
 		              <i class="material-icons">add_shopping_cart</i>
   					<!-- Modal Trigger -->
@@ -40,10 +40,10 @@ export default {
   components: {
   	similiarItemsPrice
   },
-  props: ["category"],
+  props: ["category", "categoryIndex", "brandIndex"],
    data(){
   	return {
-  		itemList: []
+  		itemList: [],
   	}
   },
   watch: { 

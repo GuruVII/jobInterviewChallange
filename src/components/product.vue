@@ -18,22 +18,24 @@
 						</div>
 						<!-- color and quantity -->
 						<div class="product-information color-quantity">
-							<div class="color valign-wrapper">
+							<div>
+								<div class="quantity-selector">
+								<a class="btn z-depth-0">
+									<i class="material-icons tiny" @click="quantity -=1">remove</i>
+								</a>
+								<span class="quantity center-align right">{{quantity}}</span>
+								<a class="btn z-depth-0 right">
+									<i class="material-icons tiny" @click="quantity +=1">add</i>
+								</a>
+								<span class="quantity-text valign-wrapper">KOLIČINA</span>
+								</div>
+							</div>
+							<div class="color valign-wrapper" v-if="product.has_variants">
 								<span class="color-text">BARVA</span>
 								<div v-for="color in product.variants">
 									<div class="circle-margin"></div>
 									<div class="circle" v-bind:style="{'background-color': color.description}"></div>
 								</div>		
-							</div>
-							<div>
-								<div class="quantity-selector">
-								<span class="quantity-text valign-wrapper">KOLIČINA</span>
-								<a class="btn z-depth-0 right">
-									<i class="material-icons tiny" @click="quantity +=1">add</i>
-								</a><span class="quantity center-align right">{{quantity}}</span><a class="btn z-depth-0">
-									<i class="material-icons tiny" @click="quantity -=1">remove</i>
-								</a>
-								</div>
 							</div>
 						</div>
 						<!-- price -->
@@ -141,7 +143,7 @@
 				cursor: pointer;
 			&.color-quantity, .quantity-selector, 
 					display: flex;
-					flex-flow: row wrap;
+					flex-flow: row-reverse wrap;
 			&.color-quantity
 			justify-content: space-between;
 			.quantity-selector

@@ -60,7 +60,7 @@
       <div class="row">
         <div class="col s12 m12 l9 xl8 offset-xl1">
         <!-- similiar items -->
-          <similiar-items :category="category" @newProductEmit="newProductEmit"></similiar-items>
+          <similiar-items :category="category" @newProductEmit="newProductEmit" :brandIndex = "brandIndex" :categoryIndex= "categoryIndex" ></similiar-items>
         </div>
       </div>
     </div>
@@ -196,6 +196,8 @@ import banner from './components/banner.vue'
 import product from './components/product.vue'
 import sideMenu from './components/sideMenu.vue'
 import similiarItems from './components/similiarItems.vue'
+import {getBrandsMixin} from "./mixins/getBrandsMixin";
+import {getCategoriesMixin} from "./mixins/getCategoriesMixin";
 
 export default {
   name: 'app',
@@ -205,11 +207,14 @@ export default {
     sideMenu,
     similiarItems
   },
+  mixins: [getBrandsMixin, getCategoriesMixin],
   data(){
     return{
       bannerTitle: "",
       category: [],
-      id: ""
+      id: "",
+      brandIndex:{},
+      categoryIndex: {}
     }
 
   },
@@ -224,6 +229,10 @@ export default {
     newProductEmit : function(id){
       this.id = id;
     }
+  },
+  mounted(){
+    this.getBrandsMixin();
+    this.getCategoriesMixin();
   }
 }
 </script>

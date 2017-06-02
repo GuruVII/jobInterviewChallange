@@ -149,4 +149,16 @@ nav
       @media (max-width: 1060px)
         padding-left: 5px;
         padding-right: 5px
+
+/* dropdown menu on mobile */
+.dropdown-content
+    li
+      margin: 0px;
+      & > a
+        color:  #9B9B9B;
+
+ul
+  li
+    & > a
+      color:  #413f40;
 </style>

@@ -86,18 +86,4 @@ ul
 li 
   display: inline-block;
   margin: 0 10px;
-.margin-left-15px
-  margin-left: 15px;
-
-/* dropdown menu on mobile */
-.dropdown-content
-    li
-      margin: 0px;
-      & > a
-        color:  #9B9B9B;
-
-ul
-  li
-    & > a
-      color:  #413f40;
 </style>

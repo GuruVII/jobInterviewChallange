@@ -1,34 +1,37 @@
 <template>
-	<div id="similiar-items">
-		<div class="row" v-if="doneItemList">
-	        <div class="col s6 m4 l4 xl4" v-for="item in itemList" v-if="item.id != category[0]" @click="newProductCalled(item.id)">
-	          <div class="card z-depth-0">
-	            <div class="card-image">
-	              <img :src="item.images[0]">
-	            </div>
-	            <div class="card-content">
-	              
-	            </div>
-	            <div class="card-action">
-	            	<p class="name">{{item.name}}</p>
-	              	<p class="product-type">{{categoryIndex[item.category_id]["name"]}}</p>
-	            	<div class="card-action-bottom">
-		              <i class="material-icons">add_shopping_cart</i>
-  					<!-- Modal Trigger -->
-		              <a href="#"><i class="material-icons">search</i></a>
-		              <i class="material-icons check-circle" v-if="item.stock_status == 'in_stock'">check_circle</i>
-		              <i class="material-icons check-circle" v-if="item.stock_status == null">check_circle</i>
-		              <i class="material-icons cancel" v-if="item.stock_status == 'out_of_stock'">cancel</i>
+<div class="row">
+    <div class="col s12 m12 l9 xl8 offset-xl1">
+		<div id="similiar-items">
+			<div class="row" v-if="doneItemList">
+		        <div class="col s6 m4 l4 xl4" v-for="item in itemList" v-if="item.id != category[0]" @click="newProductCalled(item.id)">
+		          <div class="card z-depth-0">
+		            <div class="card-image">
+		              <img :src="item.images[0]">
+		            </div>
+		            <div class="card-content">
+		              
+		            </div>
+		            <div class="card-action">
+		            	<p class="name">{{item.name}}</p>
+		              	<p class="product-type">{{categoryIndex[item.category_id]["name"]}}</p>
+		            	<div class="card-action-bottom">
+			              <i class="material-icons">add_shopping_cart</i>
+	  					<!-- Modal Trigger -->
+			              <a href="#"><i class="material-icons">search</i></a>
+			              <i class="material-icons check-circle" v-if="item.stock_status == 'in_stock'">check_circle</i>
+			              <i class="material-icons check-circle" v-if="item.stock_status == null">check_circle</i>
+			              <i class="material-icons cancel" v-if="item.stock_status == 'out_of_stock'">cancel</i>
 
-		              <!-- because prices are using . instead , we've made a subcomponent that changes how the prices look -->
-		              <span class="price"><similiar-items-price :price="item.price_discount"></similiar-items-price></span>
-	              	</div>
-	            </div>
-	          </div>
-	        </div>
-	 		
-      	</div>
+			              <!-- because prices are using . instead , we've made a subcomponent that changes how the prices look -->
+			              <span class="price"><similiar-items-price :price="item.price_discount"></similiar-items-price></span>
+		              	</div>
+		            </div>
+		          </div>
+		        </div>
+	      	</div>
+		</div>
 	</div>
+</div>
 </template>
 <script>
 import {getItemListMixin} from "./../mixins/getItemListMixin";

@@ -1,6 +1,5 @@
 <template>
-	<div>
-		<div id="search">
+	<div class="col l3 xl2 hide-on-med-and-down side-menu-position">		<div id="search">
 			<input type="text" placeholder="Iskanje..."><div><i class="material-icons">search</i></div>
 		</div>
 		<!-- done is only true after a successful API call.-->
@@ -96,6 +95,9 @@ export default {
 				display: none;
 			@media(max-width: 1200px)
 				display: inline;
-
+				
+.side-menu-position
+  margin-top: 25px;
+  padding-left: 0px !important;
 
 </style>

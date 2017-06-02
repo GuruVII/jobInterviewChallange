@@ -6,21 +6,13 @@
       <!-- item group banner -->
       <banner :banner-title="bannerTitle"></banner>
       <div class="row">
-      <!-- product information -->
-        <div class="col s12 m12 l9 xl8 offset-xl1">
+      <!-- product information -->  
           <product @bannerTitleEmit="getBannerTitle" @categoryEmit="getCategory" :id="id"></product>
-        </div>
-      <!-- side menu -->
-        <div class="col l3 xl2 hide-on-med-and-down side-menu-position">
+      <!-- side menu -->       
           <side-menu :categoryIndex="categoryIndex" :category="category" :doneCategory="doneCategory"></side-menu>
-        </div>
       </div>
-      <div class="row">
-        <div class="col s12 m12 l9 xl8 offset-xl1">
-        <!-- similiar items -->
-          <similiar-items :category="category" @newProductEmit="newProductEmit" :brandIndex = "brandIndex" :categoryIndex= "categoryIndex" ></similiar-items>
-        </div>
-      </div>     
+      <!-- similiar items -->
+      <similiar-items :category="category" @newProductEmit="newProductEmit" :brandIndex = "brandIndex" :categoryIndex= "categoryIndex" ></similiar-items>  
     </div>
     <!-- page footer -->
    <footer-page></footer-page>
@@ -108,10 +100,4 @@ ul
   li
     & > a
       color:  #413f40;
-
-/*other*/
-.side-menu-position
-  margin-top: 25px;
-  padding-left: 0px !important;
-
 </style>

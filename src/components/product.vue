@@ -1,5 +1,5 @@
 <template>
-		<div>
+		<div class="col s12 m12 l9 xl8 offset-xl1">
 			<div class="card horizontal product-card z-depth-0">
 			<!-- product name only visible on devices with width < 600px -->
 				<div class="name-top hide-on-med-and-up">

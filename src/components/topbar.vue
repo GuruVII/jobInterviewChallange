@@ -23,7 +23,7 @@
             <a data-activates='shopping-cart' class="shopping-cart"href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
           </div>
           <ul id='shopping-cart' class='dropdown-content'>
-            <li v-for="item in basket">{{item.name}}</li>
+            <li v-for="(item, index) in basket">{{item.name}} <i class="material-icons tiny" @click="removeItem(index)">clear</i>{{index}}</li>
             <li><a href="#!">two</a></li>
             <li class="divider"></li>
             <li><a href="#!">three</a></li>
@@ -75,7 +75,6 @@
             currentValue.quantity += item.quantity
             this.duplicates = true;
             this.totalQuantity += item.quantity
-            console.log("kolikokrat gre tole čez?")
             return  
           }
         })
@@ -95,6 +94,12 @@
       else {
         return this.totalQuantity
       }
+    }
+  },
+  methods :{
+    removeItem: function (index) {
+      this.totalQuantity -= this.basket[index].quantity
+      this.basket.splice(this.basket.indexOf(index), 1);
     }
   }
 }

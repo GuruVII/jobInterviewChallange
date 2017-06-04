@@ -6,7 +6,6 @@ const getCategoriesMixin = {
 			})
 			marketcloud.categories.list({})
 			.then(response => {
-				console.log(response.data)
 				response.data.forEach((item) => {
 					var id = item.id
 					this.categoryIndex[id] = item;

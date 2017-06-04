@@ -5,8 +5,7 @@ const getItemMixin = {
 				publicKey : '0a47ca08-5370-496c-8379-db43829a406f'
 			})
 			marketcloud.products.getById(id)
-				.then(response => {		
-				console.log("this just ran")	
+				.then(response => {			
   					this.product = response.data;
   					//if image is called dirrectly from the this.product the page produces and error
   					this.image = this.product.images[0];

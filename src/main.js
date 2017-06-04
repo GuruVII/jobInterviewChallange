@@ -1,12 +1,18 @@
 $(document ).ready(function(){  
+
+    $('.shopping-cart').click(function(event){
+     event.stopPropagation();
+ })
+
 	$('.shopping-cart').dropdown({
+      belowOrigin: true, // Displays dropdown below the button
       inDuration: 300,
       outDuration: 225,
       constrain_width: false, // Does not change width of dropdown to that of the activator
       hover: false, // Activate on click
       alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
-      gutter: 0, // Spacing from edge
-      belowOrigin: true // Displays dropdown below the button
+      gutter: 0 // Spacing from edge
+      
     })
 })
 

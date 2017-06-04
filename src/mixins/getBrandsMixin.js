@@ -6,7 +6,6 @@ const getBrandsMixin = {
 			})
 			marketcloud.brands.list({})
 			.then(response => {
-				console.log(response.data)
 				response.data.forEach((item) => {
 					var id = item.id
 					this.brandIndex[id] = item;

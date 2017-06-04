@@ -18,12 +18,12 @@
         <div class="row">
           <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button left"><i class="material-icons">menu</i></a>
           <a id="logo-container" href="#" class="brand-logo left"><img src="./../assets/logo.png"></a>
-          <div class="circle-number right nav-menu icon-div center-align">1</div>
+          <div class="circle-number right nav-menu icon-div center-align">{{totalQuantityComputed}}</div>
           <div class="right nav-menu icon-div">
             <a data-activates='shopping-cart' class="shopping-cart"href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
           </div>
           <ul id='shopping-cart' class='dropdown-content'>
-            <li><a href="#!">one</a></li>
+            <li v-for="item in basket">{{item.name}}</li>
             <li><a href="#!">two</a></li>
             <li class="divider"></li>
             <li><a href="#!">three</a></li>
@@ -61,28 +61,39 @@
   data(){
     return { 
       basket: [],
-      duplicates: false
+      duplicates: false,
+      totalQuantity: 0
     }
   },
   watch: {
     item: function(){
-    
-      if (this.basket.length > 0){
+
+      var item = this.item[0] 
         this.basket.forEach((currentValue) => {
         //this checks, if the item is already present in the basket
-          if ((currentValue.id == this.item[0].id) && (currentValue.variant == this.item[0].variant)){
-            currentValue.quantity += this.item[0].quantity
+          if ((currentValue.id == item.id) && (currentValue.variant == item.variant)){
+            currentValue.quantity += item.quantity
             this.duplicates = true;
+            this.totalQuantity += item.quantity
+            console.log("kolikokrat gre tole čez?")
             return  
           }
         })
+        // if duplicates is false, it means that the item in the item array isn't already in the basket
         if (this.duplicates == false){
-          this.basket.push(...this.item)
+          this.basket.push(...this.item);
+          this.totalQuantity += item.quantity;
         }
-        this.duplicates = false;
+        this.duplicates = false;     
+     }
+  },
+  computed: {
+    totalQuantityComputed: function(){
+      if (this.totalQuantity > 20){
+        return "20+"
       }
-      else{
-        this.basket.push(...this.item);
+      else {
+        return this.totalQuantity
       }
     }
   }
@@ -142,7 +153,7 @@
     color: white;
     border-radius: 50%;
     margin-left: 10px;
-    font-size: 1.1em;
+    font-size: 1.05em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -189,13 +200,17 @@ nav
 
 /* dropdown menu on mobile */
 .dropdown-content
-    li
-      margin: 0px;
-      & > a
-        color:  #9B9B9B;
+  li
+    margin: 0px;
+    & > a
+      color:  #9B9B9B;
 
 ul
   li
     & > a
       color:  #413f40;
+
+/* dropdown cart */
+#shopping-cart
+  width: 250px !important;
 </style>

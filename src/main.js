@@ -1,6 +1,6 @@
 $(document ).ready(function(){  
-
-    $('.shopping-cart').click(function(event){
+      ///this prevents the cartdropdown from closing when you remove an item
+    $('.item-clear').click(function(event){
      event.stopPropagation();
  })
 

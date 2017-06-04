@@ -23,16 +23,18 @@
             <a data-activates='shopping-cart' class="shopping-cart"href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
           </div>
           <ul id='shopping-cart' class='dropdown-content'>
-            <li class="cart-item" v-for="(item, index) in basket"><div>{{item.name}}</div> <div>x {{item.quantity}}</div> <div>{{item.quantity*item.discounted_price}} €</div> <i class="material-icons" @click="removeItem(index)">clear</i></li>
-            <li class="total-price">total:
+            <li class="cart-item" v-for="(item, index) in basket"><div class="basket-name">{{item.name}}</div> <div class="basket-quantity">x {{item.quantity}}</div> <div class="basket-price">{{(item.quantity*item.discounted_price).toFixed(2).toString().replace(/[,.]/g, function (m) {
+            return m === ',' ? '.' : ',';})}} €</div> <i class="material-icons item-clear" @click="removeItem(index)">clear</i></li>
+            <li class="total-price">TOTAL:
             {{totalPrice}} €</li>
+            <li class="blagajna-li"><a href="#" class="btn">Na Blagajno</a></li>
           </ul>
           <div class="right nav-menu icon-div">
             <i class="material-icons nav-icons nav-icon-left">search</i> 
           </div>
           <!-- navbar links -->
           <ul class="hide-on-med-and-down right nav-menu nav-menu-items">
-            <li><a href="#" class="nav-menu-item">Domov</a></li>
+            <li><a href="#" class="nav-menu-item" @click= "intoLocalStorage">Domov</a></li>
             <li><a href="#" class="nav-menu-item">Servis</a></li>
             <li><a href="#" class="nav-menu-item">Apple dodatki</a></li>
             <li><a href="#" class="nav-menu-item">Apple rezervni deli</a></li>
@@ -80,7 +82,8 @@
           this.basket.push(...this.item);
           this.totalQuantity += item.quantity;
         }
-        this.duplicates = false;     
+        this.duplicates = false;
+        this.intoLocalStorage()     
      }
   },
   computed: {
@@ -100,14 +103,37 @@
       this.basket.forEach((currentValue) => {
         price +=currentValue.quantity*currentValue.discounted_price
       })
-      return price.toFixed(2)
+      return price.toFixed(2).toString().replace(/[,.]/g, function (m) {return m === ',' ? '.' : ',';})
     }
   },
   methods :{
     removeItem: function (index) {
       this.totalQuantity -= this.basket[index].quantity
       this.basket.splice(this.basket.indexOf(index), 1);
+      this.intoLocalStorage();
+    },
+    //this function saves the basket in local storage
+    intoLocalStorage: function(){
+      let basket = JSON.stringify(this.basket);
+      localStorage.setItem("basket", basket)
+      localStorage.setItem("timeOfCreation", Date.now())
+    },
+    checkLocalStorage: function(){
+      if (localStorage.getItem("basket") != null){
+        if ((localStorage.getItem("timeOfCreation")+3600000) > Date.now()){
+          let basket = JSON.parse(localStorage.getItem("basket")); 
+          console.log("basket is:",basket)
+          this.basket = basket;
+          this.basket.forEach((currentValue)=>{
+          this.totalQuantity += currentValue.quantity;
+          })
+        }
+      }
+
     }
+  },
+  mounted(){
+    this.checkLocalStorage();
   }
 }
 </script>
@@ -224,7 +250,7 @@ ul
 
 /* dropdown cart */
 #shopping-cart
-  width: 250px !important;
+  width: 270px !important;
   li
     &:hover 
       background-color: white !important;
@@ -245,6 +271,12 @@ ul
       color: #cc0000;
       height: 19px;
       line-height: 19px;
+    .basket-name
+      width: 130px
+    .basket-quantity
+      width: 35px;
+    .basket-price
+      width: 60px;
   .total-price
     display: flex;
     flex-flow: column wrap;
@@ -252,4 +284,12 @@ ul
     align-items: flex-end;
     margin-bottom: 10px;
     padding-right: 10px;
+    font-weight: bold;
+  .blagajna-li
+    min-height: 0px;
+    .btn
+      background-color: #01afef;
+      color: #fff
+      line-height: 10px;
+      margin: -2px 0px 0px 0px
 </style>

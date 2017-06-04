@@ -62,9 +62,10 @@
 </template>
 <script>
 	import {getItemMixin} from "./../mixins/getItemMixin";
+	import {emitBasketMixin} from "./../mixins/emitBasketMixin";
 	export default {
   name: 'product',
-  mixins: [getItemMixin],
+  mixins: [getItemMixin, emitBasketMixin],
   props: ["id"],
   data(){
   	return{
@@ -85,7 +86,6 @@
   	//when product changes, we have to emit a few pieces of information
   	product: { 
   		handler: function(){
-  			this.emitBasket();
 	  		this.$emit("bannerTitleEmit", this.product.name),
 	  		//this emit is used to determine similiar items.
 	  		this.$emit("categoryEmit", [ this.product.id, this.product.category_id, this.product.product_type]);
@@ -108,14 +108,8 @@
   		if (this.quantity == 0){
   			return
   		}
-  		this.emitBasket()
+  		this.emitBasketMixin()
   		this.quantity = 0;
-  	},
-  	//function that emits the current item on the screen
-  	emitBasket: function(){
-  		let basket = []
-  		basket.push({id: this.product.id, name: this.product.name, discounted_price: this.price.discounted_price, quantity: this.quantity, variant: this.variant, img: this.image})
-  		this.$emit("addToBasketEmit", basket);
   	}
   },
   mounted() {

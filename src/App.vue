@@ -1,13 +1,13 @@
 <template>
   <div id="app">
   <!-- page top nav bar-->
-  <top-bar></top-bar>
+  <top-bar :item="basket"></top-bar>
     <div class="container">
       <!-- item group banner -->
       <banner :banner-title="bannerTitle"></banner>
       <div class="row">
       <!-- product information -->  
-          <product @bannerTitleEmit="getBannerTitle" @categoryEmit="getCategory" :id="id"></product>
+          <product @bannerTitleEmit="getBannerTitle" @addToBasketEmit="addToBasket" @categoryEmit="getCategory" :id="id"></product>
       <!-- side menu -->       
           <side-menu :categoryIndex="categoryIndex" :category="category" :doneCategory="doneCategory"></side-menu>
       </div>
@@ -49,7 +49,8 @@ export default {
       brandIndex:{},
       categoryIndex: {},
       basket: {},
-      doneCategory: false
+      doneCategory: false,
+      basket: []
     }
 
   },
@@ -61,8 +62,12 @@ export default {
       this.category = [];
       this.category.push(...category)
     },
-    newProductEmit : function(id){
+    newProductEmit: function(id){
       this.id = id;
+    },
+    addToBasket: function(item){
+      this.basket = []
+      this.basket.push(...item)
     }
   },
   mounted(){

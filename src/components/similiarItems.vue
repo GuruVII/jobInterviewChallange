@@ -54,8 +54,10 @@ export default {
   		category: { 
 	  		handler: function(){
 	  			//this makes a call for similiar items (items that have the same category and product type)
-		  		this.getItemListMixin({category_id : this.category[1],
-	  									product_type: this.category[2]})
+		  		this.getItemListMixin({
+		  			category_id : this.category[1],
+	  				product_type: this.category[2]
+	  									 })
   			},
   		deep: true
   	}

@@ -41,7 +41,7 @@
 						<!-- price -->
 						<div class="product-information price">
 							<div><span class="discount text">CENA: {{price.discounted_price}} €</span><span class="regular text">{{price.price}} €</span></div>
-							<div><a class="btn button z-depth-0"><span class="hide-text">DODAJ </span>V KOŠARO</a></div>
+							<div><a class="btn button z-depth-0" @click="addToBasket"><span class="hide-text">DODAJ </span>V KOŠARO</a></div>
 						</div>
 						<!-- variant selection -->
 						<div class="product-information color-select" v-if="product.has_variants">
@@ -73,7 +73,7 @@
   		price: {},
   		quantity: 0,
   		brand: "",
-  		image: "",
+  		image: ""
   	}
   },
   watch: {
@@ -85,23 +85,42 @@
   	//when product changes, we have to emit a few pieces of information
   	product: { 
   		handler: function(){
+  			this.emitBasket();
 	  		this.$emit("bannerTitleEmit", this.product.name),
+	  		//this emit is used to determine similiar items.
 	  		this.$emit("categoryEmit", [ this.product.id, this.product.category_id, this.product.product_type]);
   		},
   		deep: true
   	},
   	id: function(){
   		this.getItemMixin(this.id)
+  		this.quantity = 0;
+  		this.variant = 0;
   		}
   },
   methods: {
   	changeVariants : function(variant){
   		this.variant = variant - 1
-  		this.image = this.product.variants[(variant-1)].images[0];
+  		this.image = this.product.variants[this.variant].images[0];
+  		this.quantity = 0;
+  	},
+  	addToBasket: function(){
+  		if (this.quantity == 0){
+  			return
+  		}
+  		this.emitBasket()
+  		this.quantity = 0;
+  	},
+  	//function that emits the current item on the screen
+  	emitBasket: function(){
+  		let basket = []
+  		basket.push({id: this.product.id, name: this.product.name, discounted_price: this.price.discounted_price, quantity: this.quantity, variant: this.variant, img: this.image})
+  		this.$emit("addToBasketEmit", basket);
   	}
   },
   mounted() {
   	this.getItemMixin(203582)
+  	this.quantity = 0
   }
 }
 </script>

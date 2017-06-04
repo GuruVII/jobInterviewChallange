@@ -20,8 +20,16 @@
           <a id="logo-container" href="#" class="brand-logo left"><img src="./../assets/logo.png"></a>
           <div class="circle-number right nav-menu icon-div center-align">1</div>
           <div class="right nav-menu icon-div">
-            <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i>
+            <a data-activates='shopping-cart' class="shopping-cart"href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
           </div>
+          <ul id='shopping-cart' class='dropdown-content'>
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">three</a></li>
+            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+          </ul>
           <div class="right nav-menu icon-div">
             <i class="material-icons nav-icons nav-icon-left">search</i> 
           </div>
@@ -48,7 +56,36 @@
 </template>
 <script>
 	export default {
-  name: 'topBar'
+  name: 'topBar',
+  props: ["item"],
+  data(){
+    return { 
+      basket: [],
+      duplicates: false
+    }
+  },
+  watch: {
+    item: function(){
+    
+      if (this.basket.length > 0){
+        this.basket.forEach((currentValue) => {
+        //this checks, if the item is already present in the basket
+          if ((currentValue.id == this.item[0].id) && (currentValue.variant == this.item[0].variant)){
+            currentValue.quantity += this.item[0].quantity
+            this.duplicates = true;
+            return  
+          }
+        })
+        if (this.duplicates == false){
+          this.basket.push(...this.item)
+        }
+        this.duplicates = false;
+      }
+      else{
+        this.basket.push(...this.item);
+      }
+    }
+  }
 }
 </script>
 <style lang="sass">

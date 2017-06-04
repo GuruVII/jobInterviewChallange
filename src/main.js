@@ -1,3 +1,21 @@
+$(document ).ready(function(){  
+	$('.shopping-cart').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on click
+      alignment: 'left', // Aligns dropdown to left or right edge (works with constrain_width)
+      gutter: 0, // Spacing from edge
+      belowOrigin: true // Displays dropdown below the button
+    })
+})
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+
+
 import Materialize from "materialize-css"
 import Vue from 'vue';
 import marketCloud from "marketcloud-js";
@@ -21,12 +39,3 @@ marketcloud.categories.getById(203574, function(err,response){
         console.log(response);      
 });*/
 
-$(document ).ready(function(){
-	$('.modal').modal();
-    $('.collapsible').collapsible();      
-})
-
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})

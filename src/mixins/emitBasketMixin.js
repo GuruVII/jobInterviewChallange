@@ -2,9 +2,9 @@
   	
 const emitBasketMixin = {
 	methods: {
-  	emitBasketMixin: function(){
+  	emitBasketMixin: function(id, name, priceT, price, quantity, variant, img){
   		let basket = []
-  		basket.push({id: this.product.id, name: this.product.name, discounted_price: this.price.discounted_price, quantity: this.quantity, variant: this.variant, img: this.image})
+  		basket.push({id: id, name: name, discounted_price_text: priceT, discounted_price: price, quantity: quantity, variant: variant, img: img})
   		this.$emit("addToBasketEmit", basket);
   	}
   }

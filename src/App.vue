@@ -12,7 +12,7 @@
           <side-menu :categoryIndex="categoryIndex" :category="category" :doneCategory="doneCategory"></side-menu>
       </div>
       <!-- similiar items -->
-      <similiar-items :category="category" @newProductEmit="newProductEmit" :brandIndex = "brandIndex" :categoryIndex= "categoryIndex" ></similiar-items>  
+      <similiar-items :category="category" @newProductEmit="newProductEmit" @addToBasketEmit="addToBasket" :brandIndex = "brandIndex" :categoryIndex= "categoryIndex" ></similiar-items>  
     </div>
     <!-- page footer -->
    <footer-page></footer-page>

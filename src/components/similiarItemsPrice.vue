@@ -1,6 +1,6 @@
 <template>
 	<div>
-	{{convertedPrice}} €
+	{{convertedPrice}}
 	</div>
 </template>
 <script>
@@ -21,6 +21,11 @@
 				    return m === ',' ? '.' : ',';
 				})					
   	}
+  },
+  watch:{
+    price: function(){
+      this.convertPrice();
+    }
   },
   mounted(){
   	this.convertPrice()

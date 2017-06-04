@@ -23,12 +23,9 @@
             <a data-activates='shopping-cart' class="shopping-cart"href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
           </div>
           <ul id='shopping-cart' class='dropdown-content'>
-            <li v-for="(item, index) in basket">{{item.name}} <i class="material-icons tiny" @click="removeItem(index)">clear</i>{{index}}</li>
-            <li><a href="#!">two</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">three</a></li>
-            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+            <li class="cart-item" v-for="(item, index) in basket"><div>{{item.name}}</div> <div>x {{item.quantity}}</div> <div>{{item.quantity*item.discounted_price}} €</div> <i class="material-icons" @click="removeItem(index)">clear</i></li>
+            <li class="total-price">total:
+            {{totalPrice}} €</li>
           </ul>
           <div class="right nav-menu icon-div">
             <i class="material-icons nav-icons nav-icon-left">search</i> 
@@ -94,6 +91,16 @@
       else {
         return this.totalQuantity
       }
+    },
+    quantityPriceComputed: function(){
+      return item.discounted_price*item.quantity
+    },
+    totalPrice: function(){
+      let price = 0;
+      this.basket.forEach((currentValue) => {
+        price +=currentValue.quantity*currentValue.discounted_price
+      })
+      return price.toFixed(2)
     }
   },
   methods :{
@@ -218,4 +225,31 @@ ul
 /* dropdown cart */
 #shopping-cart
   width: 250px !important;
+  li
+    &:hover 
+      background-color: white !important;
+  .cart-item
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 0.9em !important;
+    color: #666666
+    min-height: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid #fff
+    i
+      font-size: 1.4em !important;
+      color: #cc0000;
+      height: 19px;
+      line-height: 19px;
+  .total-price
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    padding-right: 10px;
 </style>

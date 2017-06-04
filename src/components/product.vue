@@ -108,7 +108,7 @@
   		if (this.quantity == 0){
   			return
   		}
-  		this.emitBasketMixin()
+  		this.emitBasketMixin(this.product.id, this.product.name, this.price.discounted_price, this.product.price_discount, this.quantity, this.variant, this.image)
   		this.quantity = 0;
   	}
   },

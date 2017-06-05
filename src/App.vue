@@ -98,5 +98,5 @@ li
     margin: 0 auto;
   .row
     margin-left: 0;
-    margin-right: 0; 
+    margin-right: 0;
 </style>

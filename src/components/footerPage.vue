@@ -116,7 +116,7 @@
         <div class="footer-copyright">
             <div class="container">
               <div>
-                iDoktor  &nbsp;|&nbsp;&nbsp; iPhone, iPad, iPod servis Center Murgle Ljubljana
+                iDoktor  &nbsp;|&nbsp;&nbsp; iPhone iPad, iPod servis<span class="hide-below-512">,</span><span class="force-line-break-512">Center Murgle Ljubljana</span>
               </div>
               <div>Made as part of a job interview</div>
           </div>
@@ -189,10 +189,17 @@
 
 
   .footer-copyright
+    padding: 0 5px 0 5px;
     background-color: #222222;
     .container
       display: flex;
       justify-content: space-between;
+      .force-line-break-512
+        display: block;
+      .hide-below-512
+        @media(max-width: 512px)
+          display: none;
+
 
 .margin-left-15px
   margin-left: 15px;

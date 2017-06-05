@@ -9,7 +9,7 @@
           <a href="#"><img class="right hide-on-small-only" src="./../assets/tw.png"></a>
           <a href="#"><img class="right hide-on-small-only" src="./../assets/fb.png"></a>
           <a href="#"><img class="right hide-on-small-only" src="./../assets/inst.png"></a>
-          <p class="right address">Center Murgle, <span class="hide-on-med-and-down">Cesta v mestni log 55/e40,</span> Ljubljana</p>  
+          <p class="right address"><span class="hide-on-med-and-down">Center Murgle,</span> Cesta v mestni log 55/e40, Ljubljana</p>  
         </div>
       </div>
     </div>
@@ -148,15 +148,16 @@
   color: #EEEEEE;
   min-height: 30px;
   .row
-    margin: 0px;
+    margin: 0px 5px 0px 5px;
   .top-bar-border
     border-right: 1px solid #EEEEEE;
     padding-right: 10px;
   a 
     color: #EEEEEE;
     padding-left: 10px;
-  .address
-    padding-right: 20px;
+  .address  
+    @media(min-width: 600)
+      padding-right: 20px;
     @media (max-width: 440px)
        display: none;
   img

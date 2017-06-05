@@ -12,6 +12,12 @@ const searchMixin = {
 			// 
 			this.suggestedSearchItems = [];
 		 	this.suggestedSearchItems = [...response.data];
+		 	if (response.data.length == 0){
+		 		this.searchDisplay = "none"
+		 	}
+		 	else {
+		 		this.searchDisplay = "block"
+		 	}
 		})
 		.catch( (error) => {
 		  console.log("An error has occurred with searchMixin", error);

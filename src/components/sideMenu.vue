@@ -4,7 +4,7 @@
 		<div id="search">
 			<input type="text" placeholder="Iskanje..." v-model="searchTerm"><div><i class="material-icons">search</i></div>
 		</div>
-			<div class="search-dropdown-content" :style="{display : searchDisplay}" v-if="suggestedSearchItems.lenght != 0">
+			<div class="search-dropdown-content" :style="{display : searchDisplay}">
 			<ul>
 				<li v-for="item in suggestedSearchItems">{{item.name}}</li>
 			</ul>
@@ -52,10 +52,8 @@ export default {
   },
   watch: {
   	searchTerm: function(){
-  		if ((this.searchTerm.length > 2) && ((this.searchTerm.length%2) == 0)){
-  			console.log("this happened")
-  			this.searchMixin(this.searchTerm)
-  			this.searchDisplay = "block"
+  		if (this.searchTerm.length > 2){
+  			this.searchMixin(this.searchTerm) 		
   		}
   		if (this.searchTerm.length < 2){
   			this.suggestedSearchItems = []

@@ -5,11 +5,7 @@
 			<div class="row" v-if="doneItemList">
 		        <div class="col s6 m4 l4 xl4" v-for="(item, index) in itemList" v-if="item.id != category[0]">
 		          <div class="card z-depth-0">
-		            <div class="card-image"  @click="newProductCalled(item.id)">
-		              <img :src="item.images[0]">
-		            </div>
-		            <div class="card-content">
-		              
+		            <div class="card-image"  @click="newProductCalled(item.id)" :style="{'background-image': 'url(' + item.images[0] + ')'}">
 		            </div>
 		            <div class="card-action">
 		            	<p class="name"  @click="newProductCalled(item.id)">{{item.name}}</p>
@@ -46,6 +42,7 @@ export default {
   components: {
   	similiarItemsPrice
   },
+  //category props is contains the current products categoryID and product_type
   props: ["category", "categoryIndex", "brandIndex"],
    data(){
   	return {
@@ -79,15 +76,20 @@ export default {
 </script>
 <style lang="sass" scoped>
 	#similiar-items
-		margin-left: 24px;
+		padding-left: 24px;
 		.card			
 			border: 2px solid #DDDDDD;
 			border-radius: 1em;
 			overflow: hidden;
 			@media(max-width: 600px)
 				border-radius: 0px;
-			img
-				height: 250px;
+			.card-image
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				min-height: 150px;
+				@media(min-width: 992px)
+					min-height: 250px
 		.product-type
 			color: #333132;
 			font-size: 1em;

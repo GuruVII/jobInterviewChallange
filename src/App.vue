@@ -91,4 +91,12 @@ ul
 li 
   display: inline-block;
   margin: 0 10px;
+
+.container
+  @media (max-width: 992px) 
+    width: 100%;
+    margin: 0 auto;
+  .row
+    margin-left: 0;
+    margin-right: 0; 
 </style>

@@ -119,6 +119,8 @@
       localStorage.setItem("timeOfCreation", Date.now())
     },
     checkLocalStorage: function(){
+      console.log("checking local storage")
+      console.log(Date.now())
       if (localStorage.getItem("basket") != null){
         if ((localStorage.getItem("timeOfCreation")+3600000) > Date.now()){
           let basket = JSON.parse(localStorage.getItem("basket")); 
@@ -128,8 +130,10 @@
           this.totalQuantity += currentValue.quantity;
           })
         }
+        else {
+          localStorage.getItem("basket", "")
+        }
       }
-
     }
   },
   mounted(){
@@ -214,12 +218,6 @@
       padding-left: 15px;
   .brand-logo
     left: auto !important
-
-.nav-wrapper
-.container
-  @media (max-width: 992px) 
-    width: 98%;
-  
 
 nav
   line-height: normal;

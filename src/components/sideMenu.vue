@@ -5,9 +5,9 @@
 			<input type="text" placeholder="Iskanje..." v-model="searchTerm"><div><i class="material-icons">search</i></div>
 		</div>
 			<div class="search-dropdown-content" :style="{display : searchDisplay}">
-			<ul>
-				<li v-for="item in suggestedSearchItems" @click="newProductEmit(item.id);clearSearchTerm()">{{item.name}}</li>
-			</ul>
+				<ul>
+					<li v-for="item in suggestedSearchItems" @click="newProductEmit(item.id);clearSearchTerm()">{{item.name}}</li>
+				</ul>
 			</div>
 		</div>
 		<!-- done is only true after a successful API call.-->

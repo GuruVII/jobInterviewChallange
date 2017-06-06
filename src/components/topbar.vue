@@ -141,10 +141,9 @@ export default {
       localStorage.setItem("timeOfCreation", Date.now())
     },
     checkLocalStorage: function(){
-      console.log("checking local storage")
-      console.log(Date.now())
       if (localStorage.getItem("basket") != null){
-        if ((localStorage.getItem("timeOfCreation")+3600000) > Date.now()){
+        //if nothing has change in the basket in 1h, remove it
+        if ((parseInt(localStorage.getItem("timeOfCreation"))+3600000) > Date.now()){
           let basket = JSON.parse(localStorage.getItem("basket")); 
           console.log("basket is:",basket)
           this.basket = basket;

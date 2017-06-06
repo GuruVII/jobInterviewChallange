@@ -1,4 +1,5 @@
-$(document ).ready(function(){  
+$(document ).ready(function(){
+  $('.top-search-dropdown').dropdown('open');
       ///this prevents the cartdropdown from closing when you remove an item
   $('.item-clear').click(function(event){
     event.stopPropagation();    
@@ -9,8 +10,6 @@ $(document ).ready(function(){
   
 	$('.shopping-cart').dropdown({
     belowOrigin: true, // Displays dropdown below the button
-    inDuration: 300,
-    outDuration: 225,
     constrain_width: false, // Does not change width of dropdown to that of the activator
     hover: false, // Activate on click
     alignment: 'right', // Aligns dropdown to left or right edge (works with constrain_width)
@@ -18,8 +17,6 @@ $(document ).ready(function(){
     });
 
   $('.top-search-dropdown').dropdown({
-    inDuration: 300,
-    outDuration: 225,
     constrainWidth: false, // Does not change width of dropdown to that of the activator
     hover: false, // Activate on hover
     gutter: 0, // Spacing from edge

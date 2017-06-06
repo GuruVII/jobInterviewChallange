@@ -15,7 +15,8 @@ npm run dev
 npm run build
 
 # deployed build not working on the server?
-Check if files in the dist folder are being found, if not either move the dist folder or edit the deployed index.html file
+Check if files in the dist folder are being found, 
+if not either move the dist folder or edit the deployed index.html file
 ```
 
 

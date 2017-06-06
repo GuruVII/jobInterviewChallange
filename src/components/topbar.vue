@@ -18,28 +18,31 @@
         <div class="row">
           <a href="#" data-activates="nav-mobile"  data-constrainWidth="false" data-belowOrigin="true" class="button-collapse dropdown-button left"><i class="material-icons">menu</i></a>
           <a id="logo-container" href="#" class="brand-logo left"><img src="./../assets/logo.png"></a>
-          <div class="circle-number right nav-menu icon-div center-align">{{totalQuantityComputed}}</div>
-          <div class="right nav-menu icon-div">
-            <a data-activates='shopping-cart' class="shopping-cart" href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
+          <!-- search, cart and number of items -->
+          <div>
+            <div class="circle-number right nav-menu icon-div center-align">{{totalQuantityComputed}}</div>
+            <div class="right nav-menu icon-div">
+              <a data-activates='shopping-cart' class="shopping-cart" href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
+            </div>
+            <ul id='shopping-cart' class='dropdown-content'>
+              <li class="cart-item" v-for="(item, index) in basket"><div class="basket-name" @click="newProductEmit(item.id)">{{item.name}}</div> <div class="basket-quantity">x {{item.quantity}}</div> <div class="basket-price">{{(item.quantity*item.discounted_price).toFixed(2).toString().replace(/[,.]/g, function (m) {
+              return m === ',' ? '.' : ',';})}} €</div> <i class="material-icons item-clear" @click="removeItem(index)">clear</i></li>
+              <li class="total-price">TOTAL:
+              {{totalPrice}} €</li>
+              <li class="blagajna-li"><a href="#" class="btn">Na Blagajno</a></li>
+            </ul>
+            <div class="right nav-menu icon-div">
+              <a class="top-search-dropdown" href='#' data-activates="top-search-results"><i class="material-icons nav-icons nav-icon-left" data-beloworigin="true">search</i></a>
+            </div>
+            <ul id="top-search-results" class="dropdown-content">      
+              <li class="top-search-li">
+                <input type="text" placeholder="Iskanje..." v-model="searchTerm" class="top-search-input">
+              </li>             
+              <li v-for="item in suggestedSearchItems" class="top-search-suggestions" @click="newProductEmit(item.id);clearSearchTerm()">
+                {{item.name}}
+              </li>
+            </ul>
           </div>
-          <ul id='shopping-cart' class='dropdown-content'>
-            <li class="cart-item" v-for="(item, index) in basket"><div class="basket-name" @click="newProductEmit(item.id)">{{item.name}}</div> <div class="basket-quantity">x {{item.quantity}}</div> <div class="basket-price">{{(item.quantity*item.discounted_price).toFixed(2).toString().replace(/[,.]/g, function (m) {
-            return m === ',' ? '.' : ',';})}} €</div> <i class="material-icons item-clear" @click="removeItem(index)">clear</i></li>
-            <li class="total-price">TOTAL:
-            {{totalPrice}} €</li>
-            <li class="blagajna-li"><a href="#" class="btn">Na Blagajno</a></li>
-          </ul>
-          <div class="right nav-menu icon-div">
-            <a class="top-search-dropdown" href='#' data-activates="top-search-results"><i class="material-icons nav-icons nav-icon-left" data-beloworigin="true">search</i></a>
-          </div>
-          <ul id="top-search-results" class="dropdown-content">      
-            <li class="top-search-li">
-              <input type="text" placeholder="Iskanje..." v-model="searchTerm" class="top-search-input">
-            </li>             
-            <li v-for="item in suggestedSearchItems" class="top-search-suggestions" @click="newProductEmit(item.id);clearSearchTerm()">
-              {{item.name}}
-            </li>
-          </ul>
           <!-- navbar links -->
           <ul class="hide-on-med-and-down right nav-menu nav-menu-items">
             <li><a href="#" class="nav-menu-item" @click= "intoLocalStorage">Domov</a></li>

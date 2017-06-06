@@ -141,8 +141,12 @@
       height: 24px;
   ul   
     li
+      margin: 0;
       display: list-item;
-      list-style-type: disc;    
+      list-style-type: disc;
+      a
+        &:hover
+          text-decoration: underline
   form
     width: 90%;
     display: flex

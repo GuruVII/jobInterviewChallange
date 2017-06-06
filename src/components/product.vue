@@ -25,17 +25,15 @@
 									<div class="circle" v-bind:style="{'background-color': color.description}"></div>
 								</div>		
 							</div>
-							<div>
-								<div class="quantity-selector">
-									<span class="quantity-text valign-wrapper">KOLIČINA</span>
-									<a class="btn z-depth-0 right">
-										<i class="material-icons tiny" @click="quantity +=1">add</i>
-									</a>
-									<span class="quantity center-align right">{{quantity}}</span>
-									<a class="btn z-depth-0">
-										<i class="material-icons tiny" @click="quantity -=1">remove</i>
-									</a>
-								</div>
+							<div class="quantity-selector">
+								<span class="quantity-text valign-wrapper">KOLIČINA</span>
+								<a class="btn z-depth-0 right">
+									<i class="material-icons tiny" @click="quantity +=1">add</i>
+								</a>
+								<span class="quantity center-align right">{{quantity}}</span>
+								<a class="btn z-depth-0">
+									<i class="material-icons tiny" @click="quantity -=1">remove</i>
+								</a>
 							</div>
 						</div>
 						<!-- price -->
@@ -163,7 +161,7 @@
 			&.color-quantity
 			justify-content: space-between;
 			.quantity-selector
-				justify-content: flex-end;
+				margin-top: 5px;
 			&.name, &.name-top
 				padding-top: 0px
 			.color-text
@@ -192,8 +190,6 @@
 			.quantity-text
 				margin-right: 10px;
 				color: #616161;
-				@media (max-width: 428px)
-					display: none;
 			.btn
 				padding: 0px 8.25px;
 				background-color: #cccccc;

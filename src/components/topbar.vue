@@ -20,18 +20,26 @@
           <a id="logo-container" href="#" class="brand-logo left"><img src="./../assets/logo.png"></a>
           <div class="circle-number right nav-menu icon-div center-align">{{totalQuantityComputed}}</div>
           <div class="right nav-menu icon-div">
-            <a data-activates='shopping-cart' class="shopping-cart"href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
+            <a data-activates='shopping-cart' class="shopping-cart" href="#"> <i class="material-icons nav-icons nav-icon-right">add_shopping_cart</i></a>
           </div>
           <ul id='shopping-cart' class='dropdown-content'>
-            <li class="cart-item" v-for="(item, index) in basket"><div class="basket-name">{{item.name}}</div> <div class="basket-quantity">x {{item.quantity}}</div> <div class="basket-price">{{(item.quantity*item.discounted_price).toFixed(2).toString().replace(/[,.]/g, function (m) {
+            <li class="cart-item" v-for="(item, index) in basket"><div class="basket-name" @click="newProductEmit(item.id)">{{item.name}}</div> <div class="basket-quantity">x {{item.quantity}}</div> <div class="basket-price">{{(item.quantity*item.discounted_price).toFixed(2).toString().replace(/[,.]/g, function (m) {
             return m === ',' ? '.' : ',';})}} €</div> <i class="material-icons item-clear" @click="removeItem(index)">clear</i></li>
             <li class="total-price">TOTAL:
             {{totalPrice}} €</li>
             <li class="blagajna-li"><a href="#" class="btn">Na Blagajno</a></li>
           </ul>
           <div class="right nav-menu icon-div">
-            <i class="material-icons nav-icons nav-icon-left">search</i> 
+            <a class="top-search-dropdown" href='#' data-activates="top-search-results"><i class="material-icons nav-icons nav-icon-left" data-beloworigin="true">search</i></a>
           </div>
+          <ul id="top-search-results" class="dropdown-content">      
+            <li class="top-search-li">
+              <input type="text" placeholder="Iskanje..." v-model="searchTerm" class="top-search-input">
+            </li>             
+            <li v-for="item in suggestedSearchItems" class="top-search-suggestions" @click="newProductEmit(item.id);clearSearchTerm()">
+              {{item.name}}
+            </li>
+          </ul>
           <!-- navbar links -->
           <ul class="hide-on-med-and-down right nav-menu nav-menu-items">
             <li><a href="#" class="nav-menu-item" @click= "intoLocalStorage">Domov</a></li>
@@ -54,14 +62,20 @@
 </div>
 </template>
 <script>
-	export default {
+import {newProductEmit} from "./../mixins/newProductEmit";
+import {searchMixin} from "./../mixins/searchMixin";
+
+export default {
   name: 'topBar',
   props: ["item"],
+  mixins: [newProductEmit, searchMixin],
   data(){
     return { 
       basket: [],
       duplicates: false,
-      totalQuantity: 0
+      totalQuantity: 0,
+      searchTerm: "",
+      suggestedSearchItems: []
     }
   },
   watch: {
@@ -84,7 +98,15 @@
         }
         this.duplicates = false;
         this.intoLocalStorage()     
-     }
+     },
+     searchTerm: function(){
+      if (this.searchTerm.length > 2){
+        this.searchMixin(this.searchTerm)     
+      }
+      if (this.searchTerm.length < 2){
+        this.suggestedSearchItems = []
+      }
+    }
   },
   computed: {
     totalQuantityComputed: function(){
@@ -134,6 +156,10 @@
           localStorage.getItem("basket", "")
         }
       }
+    },
+    clearSearchTerm: function(){
+      console.log("clearing SEARCH TERM")
+      this.searchTerm = "";
     }
   },
   mounted(){
@@ -247,6 +273,31 @@ ul
     & > a
       color:  #413f40;
 
+/*dropdown search */
+#top-search-results
+  overflow-x: hidden;
+  li
+    min-height: 0px;
+    display: flex
+    &.top-search-li
+      justify-content: space-around;
+      border-bottom: solid 1px #f3f3f3;
+    &.top-search-suggestions     
+      margin: 10px 5px 5px 5px;
+      color: #999999;
+      &:hover
+        text-decoration: underline
+    &:hover
+      background-color: inherit;
+    .top-search-input
+      margin-bottom: 0px;
+      width: 90%;
+      color: #999999;
+      border-bottom: none;
+      &:focus
+        border-bottom: none;
+        box-shadow: none;
+
 /* dropdown cart */
 #shopping-cart
   width: 270px !important;
@@ -272,6 +323,9 @@ ul
       line-height: 19px;
     .basket-name
       width: 130px
+      &:hover
+        text-decoration: underline;
+
     .basket-quantity
       width: 35px;
     .basket-price

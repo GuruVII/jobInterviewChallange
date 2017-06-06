@@ -6,7 +6,7 @@
 		</div>
 			<div class="search-dropdown-content" :style="{display : searchDisplay}">
 			<ul>
-				<li v-for="item in suggestedSearchItems">{{item.name}}</li>
+				<li v-for="item in suggestedSearchItems" @click="newProductEmit(item.id);clearSearchTerm()">{{item.name}}</li>
 			</ul>
 			</div>
 		</div>
@@ -24,6 +24,7 @@
 import sideMenuSubcomponent from './sideMenuSubcomponent.vue'
 import {getCategoriesMixin} from "./../mixins/getCategoriesMixin";
 import {searchMixin} from "./../mixins/searchMixin";
+import {newProductEmit} from "./../mixins/newProductEmit";
 
 
 export default {
@@ -32,7 +33,7 @@ export default {
   	sideMenuSubcomponent
   },
   props: ["category", "categoryIndex", "doneCategory"],
-  mixins: [getCategoriesMixin, searchMixin],
+  mixins: [getCategoriesMixin, searchMixin, newProductEmit],
   data(){
   	return {
   		searchTerm: "",
@@ -48,7 +49,11 @@ export default {
   		else {
   			return false
   		};
-  	}
+  	},
+  	clearSearchTerm: function(){
+      console.log("clearing SEARCH TERM")
+      this.searchTerm = "";
+    }
   },
   watch: {
   	searchTerm: function(){
@@ -134,5 +139,7 @@ export default {
 .side-menu-position
   margin-top: 25px;
   padding-left: 0px !important;
+  @media(min-width: 993px)
+  	margin-top: 50px;
 
 </style>

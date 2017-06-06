@@ -1,15 +1,15 @@
 <template>
   <div id="app">
   <!-- page top nav bar-->
-  <top-bar :item="basket"></top-bar>
+  <top-bar :item="basket" @newProductEmit="newProductEmit"></top-bar>
     <div class="container">
       <!-- item group banner -->
       <banner :banner-title="bannerTitle"></banner>
       <div class="row">
       <!-- product information -->  
-          <product @bannerTitleEmit="getBannerTitle" @addToBasketEmit="addToBasket" @categoryEmit="getCategory" :id="id"></product>
+          <product @bannerTitleEmit="getBannerTitle" @addToBasketEmit="addToBasket" @categoryEmit="getCategory" :id="id" class="product-body"></product>
       <!-- side menu -->       
-          <side-menu :categoryIndex="categoryIndex" :category="category" :doneCategory="doneCategory"></side-menu>
+          <side-menu :categoryIndex="categoryIndex" :category="category" :doneCategory="doneCategory" @newProductEmit="newProductEmit"></side-menu>
       </div>
       <!-- similiar items -->
       <similiar-items :category="category" @newProductEmit="newProductEmit" @addToBasketEmit="addToBasket" :brandIndex = "brandIndex" :categoryIndex= "categoryIndex" ></similiar-items>  
@@ -62,6 +62,7 @@ export default {
       this.category = [];
       this.category.push(...category)
     },
+    //this is pushed as a prop to the product component
     newProductEmit: function(id){
       this.id = id;
     },

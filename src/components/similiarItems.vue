@@ -5,10 +5,10 @@
 			<div class="row" v-if="doneItemList">
 		        <div class="col s6 m4 l4 xl4" v-for="(item, index) in itemList" v-if="item.id != category[0]">
 		          <div class="card z-depth-0">
-		            <div class="card-image"  @click="newProductCalled(item.id)" :style="{'background-image': 'url(' + item.images[0] + ')'}">
+		            <div class="card-image"  @click="newProductEmit(item.id)" :style="{'background-image': 'url(' + item.images[0] + ')'}">
 		            </div>
 		            <div class="card-action">
-		            	<p class="name"  @click="newProductCalled(item.id)">{{item.name}}</p>
+		            	<p class="name"  @click="newProductEmit(item.id)">{{item.name}}</p>
 		              	<p class="product-type">{{categoryIndex[item.category_id]["name"]}}</p>
 		            	<div class="card-action-bottom">
 		            	<!-- name, price text, price, qauntity, variant, image location-->
@@ -35,10 +35,11 @@
 import {getItemListMixin} from "./../mixins/getItemListMixin";
 import similiarItemsPrice from './similiarItemsPrice.vue';
 import {emitBasketMixin} from "./../mixins/emitBasketMixin";
+import {newProductEmit} from "./../mixins/newProductEmit";
 
 export default {
   name: 'similiarItems',
-  mixins: [getItemListMixin, emitBasketMixin],
+  mixins: [getItemListMixin, emitBasketMixin, newProductEmit],
   components: {
   	similiarItemsPrice
   },
@@ -64,10 +65,6 @@ export default {
   	
   },
   methods: {
-  	newProductCalled : function(id){
-  		this.$emit("newProductEmit", id);
-
-  	},
   	priceEmit: function(price){
   		this.priceTextArray.push(price);
   	}

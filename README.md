@@ -24,3 +24,6 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 This is a copy of a product page made from the ground up, using the Materialize CSS framework and VueJS. 
 Everything that doesn't lead from the product page is working (for example clicking on a similiar item works).
 The page is responsive, has a functioning search function and a working shopping cart.
+
+## Demo
+[Link](https://job-interview-app-challange.herokuapp.com/)

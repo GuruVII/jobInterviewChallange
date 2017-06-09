@@ -287,6 +287,7 @@ ul
     &.top-search-suggestions     
       margin: 10px 5px 5px 5px;
       color: #999999;
+      white-space: nowrap;
       &:hover
         text-decoration: underline
     &:hover

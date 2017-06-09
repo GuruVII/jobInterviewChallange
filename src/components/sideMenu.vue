@@ -6,7 +6,7 @@
 		</div>
 			<div class="search-dropdown-content" :style="{display : searchDisplay}">
 				<ul>
-					<li v-for="item in suggestedSearchItems" @click="newProductEmit(item.id);clearSearchTerm()">{{item.name}}</li>
+					<li v-for="item in suggestedSearchItems" @click="newProductEmit(item.id);clearSearchTerm()" class="side-search-suggestion">{{item.name}}</li>
 				</ul>
 			</div>
 		</div>
@@ -83,6 +83,14 @@ export default {
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		padding: 12px 16px;
 		z-index: 999;
+		.side-search-suggestion     
+			margin: 10px 5px 5px 5px;
+			color: #999999;
+			cursor: pointer;
+			white-space: nowrap;
+			&:hover
+				text-decoration: underline
+
 
 	#search
 		box-shadow: 0 0 2px #b7b7b7;

@@ -2,6 +2,7 @@
 <div class="row">
 	<div class="col s12 m12 l9 xl8 offset-xl1">
 		<div id="similiar-items">
+			<h5 class="similiar-items-title">PODOBNI IZDELKI</h5>
 			<div class="row" v-if="doneItemList">
 				<div class="col s6 m4 l4 xl4" v-for="(item, index) in itemList" v-if="item.id != category[0]">
 					<div class="card z-depth-0">
@@ -144,7 +145,11 @@ export default {
 
 
 #similiar-items
-	padding-left: 24px;
+	padding-left: 12.5px;
+	.similiar-items-title
+		padding-left: 11.5px;
+		font-weight: bold;
+		color: #575757;
 	.card			
 		border: 2px solid #DDDDDD;
 		border-radius: 1em;
